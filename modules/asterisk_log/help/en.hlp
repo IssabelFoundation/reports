@@ -1,0 +1,32 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>The option "Asterisk Logs" of the "Reports" module allows visualizing the content of Asterisk logs for monitoring the events. You can filter the results by date or strings that are in the content of the logs </p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_asterisk_log.png" border="0" />
+<p>Figure 1</p></div>
+
+<p>Below a description of each column.</p>
+<table class="inline">
+  <tr>
+    <th>Column</th><th>Description</th>
+  </tr>
+  <tr>
+    <td>Date</td><td>The date of the event.</td>
+  </tr>
+  <tr>
+    <td>Type</td><td>The type of the event.</td>
+  </tr>
+  <tr>
+    <td>Source</td><td>Where the event comes from.</td>
+  </tr>
+  <tr>
+    <td>Message</td><td>The description of the event.</td>
+  </tr>
+</table>
+
+</body>
+</html>

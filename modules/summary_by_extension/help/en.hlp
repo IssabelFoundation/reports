@@ -1,0 +1,17 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+	<p>The option "Summary" of the menu "Reports" in Issabel shows a report of each Extension registered in the server. You can see the number of incoming and outgoing calls, the duration of the calls, the caller id and the dialing number. Use the filter to find and extension or user.</p>	
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_summary.png" border="0" />
+	<p>Figure 1</p></div>
+	<br />
+	<p>Click on "View" to see more information of an extension.</p>
+	<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_summary_graph.png" border="0" />
+	<p>Figure 2</p></div>
+	<br />
+    </body>
+</html>

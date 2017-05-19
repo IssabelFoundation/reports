@@ -1,0 +1,50 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+        <p>The option "Billing Report" in Issabel shows a complete report of calls according to a rate established in "Billing Rates". You can filter the results by date, rate applied, duration and so on <i>(See Figure 1)</i>. Also you can download this report in different formats such as CSV, XLS and PDF.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_billing_report.png" border="0" />
+        <p>Figure 1</p></div>
+        <br />
+        <p>The fields in this report are:</p>
+	<table class="inline">
+	  <tr>
+	    <th>Name</th><th>Description</th>
+	  </tr>
+	  <tr>
+	    <td>Date</td><td>Initial date of call</td>
+	  </tr>
+	  <tr>
+	    <td>Rate Applied</td><td>Name of Rate applied</td>
+	  </tr>
+	  <tr>
+	    <td>Rate Value</td><td>Rate value by minutes</td>
+	  </tr>
+	  <tr>
+	    <td>Source</td><td>Number or source</td>
+	  </tr>
+	  <tr>
+	    <td>Destination</td><td>Destination Number</td>
+	  </tr>
+	  <tr>
+	    <td>Dst. Channel</td><td>Channel Destination (Example: DAHDI/1)</td>
+	  </tr>
+	  <tr>
+	    <td>Account Code</td><td>Code of account extension</td>
+	  </tr>
+	  <tr>
+	    <td>Duration</td><td>Duration in seconds of calls</td>
+	  </tr>
+	  <tr>
+	    <td>Cost</td><td>Cost of call</td>
+	  </tr>
+	  <tr>
+	    <td>Summary Cost</td><td>Sum of all calls by cost field</td>
+	  </tr>
+	</table>
+	<br />
+    </body>
+</html>

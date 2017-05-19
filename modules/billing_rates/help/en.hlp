@@ -1,0 +1,63 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+	<p>The option "Rates" of the menu "Reports" allows creating new rates and editing existing ones for billing.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_billing_rate.png" border="0" />
+        <p>Figure 1</p></div>
+        <br />
+	
+	<p>To edit or delete a rate, click on the "View" link from the list in <i>Figure 1</i>.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_rate_view.png" border="0" />
+        <p>Figure 2</p></div>
+        <br />	
+
+        <h2>Create a new Rate</h2>
+        <p> You can create a new rate by clicking on "Create New Rate" button. <i>(Figure 2)</i></p><br />
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_new_rate.png" border="0" />
+        <p>Figure 3</p></div>
+        <br />
+	<p>Below a description of each parameter:</p>
+	
+	<table class="inline">
+	  <tr>
+	    <th>Parameter</th><th>Description</th>
+	  </tr>
+	  <tr>
+	    <td>Prefix</td><td>All the numbers that begin with this prefix will apply to this rate.</td>
+	  </tr>
+	  <tr>
+	    <td>Name</td><td>This is the name to identify the rate.</td>
+	  </tr>
+	  <tr>
+	    <td>Rate (by min)</td><td>This is the rate that will be apply to every single minute of consumption.</td>
+	  </tr>
+	  <tr>
+	    <td>Rate offset</td><td>This is the rate assigned for the connection.</td>
+	  </tr>
+	  <tr>
+	    <td>Hidden Digits</td><td>This indicates the amount of digits you want to hide in the destination number.</td>
+	  </tr>
+	  <tr>
+	    <td>Trunk</td><td>Select the trunk that will apply for the rate. Make sure the trunk you want to use is enabled. To check this, go to "Billing Setup" module. </td>
+	  </tr>
+	</table>
+	<br />
+	<h2>Edit an existing Rate</h2>
+	<p>Here you can edit all the parameters except the Prefix. If you want to keep the old rate just to have a history of all changes, you can do it by selecting the "File Current rate" checkbox and then clicking on "Apply Changes" button.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_edit_rate.png" border="0" />
+        <p>Figure 4</p></div>
+        <br />
+        <h2>Import Rates</h2>
+        <p> You can import a file containing the information of rates you want to create. It must be a CSV file.</p>
+        <br />
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_import_rate.png" border="0" />
+        <p>Figure 5</p></div>
+	<p>The <i>Figure 6</i> shows an example of this file.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_import_rate_file.png" border="0" />
+        <p>Figure 6</p></div>
+    </body>
+</html>

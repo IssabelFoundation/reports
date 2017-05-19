@@ -1,0 +1,17 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+	<p>La opción "Resumen" del menú "Reportes" muestra un reporte de cada extensión registrada en el servidor Issabel. Usted puede ver el número de llamadas entrantes y salientes, la duración de las llamadas, el caller ID y el número marcado. Utilize el filtro para especificar una extensión o usuario en particular.</p>	
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_summary.png" border="0" />
+	<p>Figura 1</p></div>
+	<br />
+	<p>Para ver un gráfico de llamadas correspondientes a una extensión haga click en el enlace "Ver".</p>
+	<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_summary_graph.png" border="0" />
+	<p>Figura 2</p></div>
+	<br />
+    </body>
+</html>

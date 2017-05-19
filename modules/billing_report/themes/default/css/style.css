@@ -1,0 +1,29 @@
+.time{
+    width:162px;
+    float:right;
+   /*visibility: hidden;*/
+}
+
+.time2{
+    width:162px;
+    float:left;
+    height: 15px;
+    /*padding-right:1px;*/
+   /*visibility: hidden;*/
+}
+
+.time3{
+    float:left;
+    height: 15px;
+}
+
+
+#textfield{
+    /*padding-right:1px;*/
+    display:none;
+}
+
+#duration{
+    /*padding-right:1px;*/
+    width:150px;
+}

@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>La opción "Reporte Gráfico" en Issabel permite visualizar gráficamente información acerca del número de llamadas, colas y troncales del sistema tanto en cantidad como en porcentaje.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_graphic_report_1.png" border="0" />
+<p>Figura 1</p></div>
+<br />
+<p>Para ver la información de una extensión específica, seleccione "Extensión (Numero)" y haga click en el enlace denominado "Aquí" para elegir el número de extensión. Luego haga click en el botón "Mostrar".  <i>Ver Figura 2 y 3</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_graphic_report_2.png" border="0" />
+<p>Figura 2</p></div>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_graphic_report_3.png" border="0" />
+<p>Figura 3</p></div>
+<br />
+<p>Es posible generar un gráfico de Número de Llamadas vs. Colas. Para hacer esto sólo seleccione "Colas" del menú desplegable. <i>Ver Figura 4</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_graphic_report_4.png" border="0" />
+<p>Figura 4</p></div>
+<br />
+<p>Para generar un gráfico de llamadas de acuerdo a una troncal seleccione "Troncal" en el menú desplegable y luego el nombre de la troncal. Aquí se puede revisar la duración de las llamadas entrantes y salientes por cada troncal.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_graphic_report_5.png" border="0" />
+<p>Figura 5</p></div>
+</body>
+</html>

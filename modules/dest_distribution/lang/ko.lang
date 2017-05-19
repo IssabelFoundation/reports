@@ -1,0 +1,49 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Elastix version 0.5                                                  |
+  | http://www.elastix.com                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | Cdla. Nueva Kennedy Calle E 222 y 9na. Este                          |
+  | Telfs. 2283-268, 2294-440, 2284-356                                  |
+  | Guayaquil - Ecuador                                                  |
+  | http://www.palosanto.com                                             |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Original Code is: Elastix Open Source.                           |
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  +----------------------------------------------------------------------+
+  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+global $arrLangModule;
+$arrLangModule = array(
+    "Filter" => "필터",
+    "Start Date" => "시작 날자",
+    "End Date" => "종료 날자",
+    "Destination Distribution" => "목적지 분배",
+    "Criteria" => "기준",
+    "Distribution by Time" => "시간기준에 따른 정렬",
+    "Distribution by Number of Calls" => "사용호수에 따른 정렬",
+    "Distribution by Cost" => "요금에 따른 정렬",
+    "Date Range spans maximum number of days" => "데이터의 범위는 최대 사용일수을 나타낸다.",
+    "ERROR" => "에러",
+    "Minutes" => "분",
+    "Number of Calls" => "사용콜수",
+    "others" => "기타",
+    "Rate Name" => "요율 이름",
+    "default" => "초기값",
+    "Duration in seconds" => "사용시간(초)",
+    "Cost" => "요금",
+);
+?>

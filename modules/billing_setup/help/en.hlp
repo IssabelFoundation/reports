@@ -1,0 +1,19 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+
+<h1>{$node_name}</h1>
+
+<p>The option “Billing Setup” of the Menu “Billing” in Issabel lets us determine the cost per minute of the connection for the route by omission, and also determine which of the trunks will be used for the billing process</p>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_trunk_bill_configuration.png" border="0" />
+<p>Figure 1</p></div>
+<br />
+
+<p>The list shows all of the registered trunks; you should select the ones that will be used for billing and click on the “Billing Capable” button.</p>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>The option "Missed Calls" of the menu "Reports" in Issabel shows a report of the missed calls of all extensions so you can know when an extension has been receiving calls. You can download this report by clicking on "Download" button. The available formats for this file are <i>csv, xml </i>and <i>pdf</i></p>
+<p>You can filter the results by:</p> 
+<ul>
+  <li><b>Start Date:</b> Find missed calls from this date.</li>
+  <li><b>End Date  :</b> Find missed calls until this date.</li>
+  <li>
+    <b>Search      :</b> You can filter the results by these parameters:
+    <ul>
+      <li><span style="font-style: italic; font-weight: bold;">Source :</span> Number that made the call.</li>
+      <li><span style="font-style: italic; font-weight: bold;">Destination:</span> Number that received the call.</li>
+    </ul>
+  </li>
+</ul>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_missed_calls.png" border="0" />
+<p>Figure 1</p></div>
+<br />
+</body>
+</html>
+

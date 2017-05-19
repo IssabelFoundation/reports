@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <menulist>
+    <menuitem menuid="reports"              desc="Reports"                   parent=""        module="no"  link="" order="8"></menuitem>
+    <menuitem menuid="cdrreport"            desc="CDR Report"                parent="reports" module="yes" link="" order="1">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+            <group id="2" name="Operator" desc="Operator"></group>
+        </permissions>
+        <privilege name="reportany" desc="View CDRs from all users, not just their own">
+            <grant2group name="administrator" />
+        </privilege>
+        <privilege name="deleteany" desc="Delete CDRs from the system report">
+            <grant2group name="administrator" />
+        </privilege>
+    </menuitem>
+    <menuitem menuid="channelusage"         desc="Channels Usage"            parent="reports" module="yes" link="" order="2">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+            <group id="2" name="Operator" desc="Operator"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="billing"              desc="Billing"                   parent="reports" module="no"  link="" order="3">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="billing_rates"        desc="Rates"                     parent="billing" module="yes" link="" order="31">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="billing_report"       desc="Billing Report"            parent="billing" module="yes" link="" order="32">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+            <group id="2" name="Operator" desc="Operator"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="dest_distribution"    desc="Destination Distribution"  parent="billing" module="yes" link="" order="33">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+            <group id="2" name="Operator" desc="Operator"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="billing_setup"        desc="Billing Setup"             parent="billing" module="yes" link="" order="34">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+            <group id="2" name="Operator" desc="Operator"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="asterisk_log"         desc="Asterisk Logs"             parent="reports" module="yes" link="" order="4">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="graphic_report"       desc="Graphic Report"            parent="reports" module="yes" link="" order="5">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="summary_by_extension" desc="Summary"   parent="reports" module="yes" link="" order="6">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+    </menuitem>
+    <menuitem menuid="missed_calls" desc="Missed Calls"      parent="reports" module="yes" link="" order="7">
+        <permissions>
+            <group id="1" name="administrator" desc="total access"></group>
+        </permissions>
+        <privilege name="viewany" desc="View missed calls from all users, not just their own">
+            <grant2group name="administrator" />
+        </privilege>
+    </menuitem>
+  </menulist>
+</module>

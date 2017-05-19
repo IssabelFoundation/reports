@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>The option "Graphic Report" of the "Reports" module allows visualizing graphically information about the number of calls, queues and trunks of the system both in quantity and percentage.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_graphic_report_1.png" border="0" />
+<p>Figure 1</p></div>
+<br />
+<p>To see the information of a specific extension, select "Extension(Number)" and then click on the link "Here". In the pop-up window, choose the phone number and then click on "Show button". <i>See Figure 2 and 3</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_graphic_report_2.png" border="0" />
+<p>Figure 2</p></div>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_graphic_report_3.png" border="0" />
+<p>Figure 3</p></div>
+<br />
+<p>It is possible to generate a graphic of Number of Calls vs. Queues. To do this just select "Queue" from the dropdown menu. <i>See Figure 4</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_graphic_report_4.png" border="0" />
+<p>Figure 4</p></div>
+<br />
+<p>To generate a graphic of calls for the trunks, select "Trunk" from the first dropdown menu, and then select the name of the trunk from the second dropdown menu. Here you can check the duration of incoming and outgoing calls.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_graphic_report_5.png" border="0" />
+<p>Figure 5</p></div>
+</body>
+</html>

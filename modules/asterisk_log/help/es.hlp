@@ -1,0 +1,32 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>La opción "Logs de Asterisk" en Issabel permite visualizar el contenido de los logs de Asterisk para monitorear eventos. Usted puede filtrar los resultados por fecha o por palabras/frases específicas.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_asterisk_log.png" border="0" />
+<p>Figura 1</p></div>
+
+<p>A continuación una descripción de cada columna.</p>
+<table class="inline">
+  <tr>
+    <th>Columna</th><th>Descripción</th>
+  </tr>
+  <tr>
+    <td>Fecha</td><td>La fecha en que ocurrió el evento.</td>
+  </tr>
+  <tr>
+    <td>Tipo</td><td>El tipo del evento.</td>
+  </tr>
+  <tr>
+    <td>Fuente</td><td>En qué archivo se generó el evento.</td>
+  </tr>
+  <tr>
+    <td>Mensaje</td><td>La descripción del evento</td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+
+<h1>{$node_name}</h1>
+
+<p>La opción "Uso de Canales" del menú "Reportes" permite visualizar gráficamente el número de llamadas simultáneas en cada canal a través del tiempo.</p>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_channel_usage.png" border="0" />
+<p>Figura 1</p></div>
+<br />
+
+</body>
+</html>

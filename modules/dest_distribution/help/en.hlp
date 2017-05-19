@@ -1,0 +1,48 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+
+<p>The “Destination Distribution” option of the “Billing” Menu in Issabel lets us view graphically the distribution of the outgoing calls grouped by rate. The graph will change depending on the values of the filter:</p>
+
+<table class="inline">
+	<tr>
+		<th>Name</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>Start Date</td><td>The start date for calls to be selected.</td>
+	</tr>
+	<tr>
+
+		<td>End Date</td><td>The end date for calls to be selected.</td>
+	</tr>
+	<tr>
+		<td>Criteria</td><td>Criteria for distribution: Distribution by Time, Distribution by Number of Calls, Distribution by Cost.</td>
+	</tr>
+</table>
+
+<br />
+
+<h3>Distribution by Time</h3>
+ 
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_dest_distrib_time.png" border="0" />
+<p>Figure 1</p></div>
+<br />
+
+<h3>Distribution by Number of Calls</h3>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_dest_distrib_calls.png" border="0" />
+<p>Figure 2</p></div>
+<br />
+
+<h3>Distribution by Cost</h3>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/hlp_dest_distrib_cost.png" border="0" />
+<p>Figure 3</p></div>
+<br />
+
+</body>
+</html>

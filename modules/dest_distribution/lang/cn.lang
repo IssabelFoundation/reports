@@ -1,0 +1,49 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Elastix version 0.5                                                  |
+  | http://www.elastix.com                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | Cdla. Nueva Kennedy Calle E 222 y 9na. Este                          |
+  | Telfs. 2283-268, 2294-440, 2284-356                                  |
+  | Guayaquil - Ecuador                                                  |
+  | http://www.palosanto.com                                             |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Original Code is: Elastix Open Source.                           |
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  +----------------------------------------------------------------------+
+  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+global $arrLangModule;
+$arrLangModule = array(
+    "Filter" => "过滤器",
+    "Start Date" => "开始日期",
+    "End Date" => "结束日期",
+    "Destination Distribution" => "目的分发",
+    "Criteria" => "标准",
+    "Distribution by Time" => "以时间分配",
+    "Distribution by Number of Calls" => "以通話次数分配",
+    "Distribution by Cost" => "以花费金额分配",
+    "Date Range spans maximum number of days" => "日期超过了最大时间限制",
+    "ERROR" => "错误",
+    "Minutes" => "分钟",
+    "Number of Calls" => "通话次数",
+    "others" => "其他",
+    "Rate Name" => "Rate名称",
+    "default" => "默认设置",
+    "Duration in seconds" => "持续时间(秒)",
+    "Cost" => "花费金额",
+);
+?>

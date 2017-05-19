@@ -1,0 +1,64 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+	<p>La opción "Tarifas" del menú "Reportes" permite crear tasas de facturación.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_billing_rate.png" border="0" />
+        <p>Figura 1</p></div>
+        <br />
+	
+	<p>Para editar o eliminar una tarifa de facturación, haga click en el link "Ver" de la lista como muestra la Figura 1.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_rate_view.png" border="0" />
+        <p>Figura 2</p></div>
+        <br />	
+
+        <h2>Crear una nueva tarifa</h2>
+        <p>Usted puede crear una nueva tarifa haciendo click en el botón "Crear Nueva Tarifa". <i>(Figura 2)</i></p><br />
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_new_rate.png" border="0" />
+        <p>Figura 3</p></div>
+        <br />
+	<p>A continuación una descripción de cada parámetro:</p>
+	
+	<table class="inline">
+	  <tr>
+	    <th>Parámetro</th><th>Descripción</th>
+	  </tr>
+	  <tr>
+	    <td>Prefijo</td><td>Todos los números que empiecen con este prefijo aplicarán esta tarifa.</td>
+	  </tr>
+	  <tr>
+	    <td>Nombre</td><td>Este es el nombre que identifica a la tarifa.</td>
+	  </tr>
+	  <tr>
+	    <td>Tarifa</td><td>Este es el valor que se cobrará por cada minuto de consumo.</td>
+	  </tr>
+	  <tr>
+	    <td>Interconexión</td><td>Esta es la tarifa asignada para la interconexión de la llamada.</td>
+	  </tr>
+	  <tr>
+	    <td>Dígitos Ocultos</td><td>Indica la cantidad de dígitos que se desea esconder en el número de destino.</td>
+	  </tr>
+	  <tr>
+	    <td>Troncal</td><td>Seleccione la troncal que aplicará la tarifa. Asegúrese que la troncal que va a usar esté habilitada. Para revisar esto vaya al módulo "Configuración de Facturación". </td>
+	  </tr>
+	</table>
+	<br />
+	<h2>Editar una tarifa existente</h2>
+	<p>Aquí puede editar todos los parámetros con excepción del 
+Prefijo. Para mantener un historial de tarifas anteriores marque la casilla "Mantener el histórico de la tarifa actual" en letra naranja. Para guardar haga click en el botón "Aplicar Cambios".</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_edit_rate.png" border="0" />
+        <p>Figura 4</p></div>
+        <br />
+        <h2>Importar Tarifas</h2>
+        <p> Usted puede importar un archivo que contenga información de las tarifas que desea crear. Este archivo debe estar en formato CSV.</p>
+        <br />
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_import_rate.png" border="0" />
+        <p>Figura 5</p></div>
+	<p>La <i>Figura 6</i> muestra un ejemplo de este archivo.</p>
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_import_rate_file.png" border="0" />
+        <p>Figura 6</p></div>
+    </body>
+</html>

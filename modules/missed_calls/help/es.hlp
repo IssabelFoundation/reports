@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>La opción "Llamadas Perdidas" del menú "Reportes" muestra un reporte de las llamadas perdidas en todas las extensiones registradas en el servidor. Usted puede descargar este reporte haciendo click en el botón "Descargar". Los formatos disponibles en que se puede descargar el archivo son CSV, XML y PDF.</p>
+<p>Usted puede filtrar los resultados por:</p> 
+<ul>
+  <li><b>Fecha Inicio:</b> Encontrar llamadas perdidas a partir de esta fecha.</li>
+  <li><b>Fecha Fin:</b> Encontrar llamadas perdidas hasta esta fecha.</li>
+  <li>
+    <b>Buscar:</b> Usted puede filtrar los resultados de acuerdo a estos parámetros:
+    <ul>
+      <li><span style="font-style: italic; font-weight: bold;">Origen :</span> Número que originó la llamada.</li>
+      <li><span style="font-style: italic; font-weight: bold;">Destino:</span> Número de recibió la llamada.</li>
+    </ul>
+  </li>
+</ul>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/es_hlp_missed_calls.png" border="0" />
+<p>Figura 1</p></div>
+<br />
+</body>
+</html>
+

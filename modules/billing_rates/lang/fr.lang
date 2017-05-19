@@ -1,0 +1,87 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Elastix version 0.5                                                  |
+  | http://www.elastix.com                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | Cdla. Nueva Kennedy Calle E 222 y 9na. Este                          |
+  | Telfs. 2283-268, 2294-440, 2284-356                                  |
+  | Guayaquil - Ecuador                                                  |
+  | http://www.palosanto.com                                             |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Original Code is: Elastix Open Source.                           |
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  +----------------------------------------------------------------------+
+  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+global $arrLangModule;
+$arrLangModule = array(
+    "Billing Rates" => "Coûts de facturation",
+    "Prefix" => "Préfixe",
+    "Rate" => "Tarif",
+    "Rate Offset" => "Taux compensateur",
+    "None" => "Aucun",
+    "(by min)" => " (par mn)",
+    "New Rate" => "Nouveau tarif",
+    "Edit Rate" => "Editer les tarif",
+    "View Rate" => "Voir les tarifs",
+    "View" => "Voir",
+    "Rates List" => "Liste des tarifs",
+    "Name" => "Nom",
+    "Are you sure you wish to continue?" => "Êtes-vous sûr de vouloir continuer ?",
+    "create_rate" => "Créer un nouveau tarif",
+    "import_rate" => "Importation de fichier",
+    "Creation Date" => "Date de création",
+    "Closing Date" => "Date de fermeture",
+    "Default" => "Défaut",
+    "New_rate" => "Nouveau tarif",
+    "CANCEL" => "Annuler",
+    "SAVE" => "Sauvegarder",
+    "REQUIRED_FIELD" => "Champ requis",
+    "EDIT" => "Modifier",
+    "DELETE" => "Supprimer",
+    "Rate_offset" => "Taux compensateur",
+    "Error_new" => "Erreur : vous devez renseigner tous les champs lors de la création d'un taux",
+    "Error_edit" => "Erreur : vous devez renseigner tous les champs lors de l'édition du taux",
+    "error_name" => "Erreur : un taux avec ce nom existe déjà",
+    "File_error" => "Impossible de créer le taux avec le fichier fichier.csv",
+    "Error on line" => "Erreur sur la ligne",
+    "Invalid_file_extension" => "<b>Extension de fichier invalide</b> : il doit être en csv.",
+    "create_new_rate" => "Le taux a été créé",
+    "edit_rate" => "Le taux a été modifié",
+    "error_prefix" => "Le préfixe existe déjà pour le même trunk",
+    "error" => "Une erreur s'est produite lors de l'écriture dans la base de données. Veuillez vérifier les informations saisies.",
+    "CONFIRM_CONTINUE" => "Etes-vous sûr de vouloir supprimer ce taux ?",
+    "deleted" => "Le taux a été supprimé",
+    "deleted_error" => "Erreur lors de la suppression du taux dans la base de données",
+    "Hidden_Digits" => "Chiffres cachés",
+    "APPLY_CHANGES" => "Appliquer les modifications",
+    "Validation Error" => "Erreur de validation",
+    "error_CVS" => "Une erreur s'est produite lors de l'écriture dans la base de données. Veuillez vérifier votre fichier csv.",
+    "by_min" => "(par min)",
+    "alert_import" => "[!]Fichier.csv[/!]&quot;Préfixe&quot;,&quot;Nom&quot;,&quot;Taux&quot;,&quot;Taux compensateur&quot;,&quot;Chiffres cachés&quot;,&quot;Trunk&quot;",
+    "Date close" => "Date de fermeture",
+    "Rate History" => "Taux de change",
+    "Keep history of the current rate" => "Conserver l'historique du taux actuel",
+    "This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "Cette option permet de modifier le taux actuel tout en conservant l'historique des différentes valeurs que ce taux a adopté au fil du temps (utile pour tenir un registre reflétant la valeur réelle du taux à un moment donné.",
+    "errorUpdateParent" => "Une erreur s'est produite lors de l'écriture dans la base de données. Veuillez réessayer.",
+    "Status" => "Statut",
+    "Obsolete" => "Obsolète",
+    "Current" => "Actuel",
+    "File was imported successful" => "Le fichier a été importé avec succès",
+    "Error rate name already exists in database or is duplicated in csv file" => "Ce nom de taux existe déjà dans la base de données ou est en double dans le fichier csv",
+    "The prefix already exists with the same Trunk in database or is duplicated in csv file" => "Ce préfixe existe déjà avec le même trunk dans la base de données ou est en double dans le fichier csv",
+);
+?>
