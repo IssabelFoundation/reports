@@ -80,7 +80,7 @@ class paloQueue {
             $arr_result = FALSE;
         } else {
             if (count($arr_result) > 0) {
-                // Tratar para esquema de base de datos de FreePBX 2.4.x
+                // Tratar para esquema de base de datos de version 2.4.x
                 if (!is_null($id)) {
                     $where_id = " and extension='$id'";
                 }
@@ -91,7 +91,7 @@ class paloQueue {
                     $arr_result = FALSE;
                 }
             } else {
-                // Tratar para esquema de base de datos de FreePBX 2.3.1
+                // Tratar para esquema de base de datos de version 2.3.1
                 if (!is_null($id)) {
                     $where_id = " and queues.id='$id'";
                 }
