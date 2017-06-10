@@ -26,7 +26,7 @@
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
   $Id: index.php,v 1.1 2011-04-25 09:04:41 Eduardo Cueva ecueva@palosanto.com Exp $ */
-//include elastix framework
+//include issabel framework
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoForm.class.php";
 include_once "libs/paloSantoConfig.class.php";
@@ -56,7 +56,7 @@ function _moduleContent(&$smarty, $module_name)
     $dsn = generarDSNSistema('asteriskuser', 'asteriskcdrdb');
     $pDB = new paloDB($dsn);
 
-    $pDBACL = new paloDB($arrConf['elastix_dsn']['acl']);
+    $pDBACL = new paloDB($arrConf['issabel_dsn']['acl']);
     if (!empty($pDBACL->errMsg)) {
         return "ERROR DE DB: $pDBACL->errMsg";
     }
@@ -71,9 +71,9 @@ function _moduleContent(&$smarty, $module_name)
 
     // Para usuarios que no son administradores, se restringe a los CDR de la
     // propia extensión. Cuidado con no-admin que no tiene extensión.
-    $viewany = $pACL->hasModulePrivilege($_SESSION['elastix_user'],
+    $viewany = $pACL->hasModulePrivilege($_SESSION['issabel_user'],
         $module_name, 'viewany');
-    $sExtension = $viewany ? '' : $pACL->getUserExtension($_SESSION['elastix_user']);
+    $sExtension = $viewany ? '' : $pACL->getUserExtension($_SESSION['issabel_user']);
     $sExtension = trim("$sExtension");
     if (!$viewany && $sExtension == '') {
         return _tr('No extension for missed calls. Contact your administrator.');

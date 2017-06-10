@@ -40,7 +40,7 @@ require_once "libs/paloSantoTrunk.class.php";
 
 function _moduleContent(&$smarty, $module_name)
 {
-    //include elastix framework
+    //include issabel framework
     include_once "libs/paloSantoGrid.class.php";
     include_once "libs/paloSantoForm.class.php";
     include_once "libs/paloSantoConfig.class.php";

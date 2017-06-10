@@ -30,7 +30,7 @@ global $arrConfModule;
 global $arrConf;
 $arrConfModule['module_name'] = 'billing_report';
 $arrConfModule['templates_dir'] = 'themes';
-$arrConfModule['dsn_conn_database_1'] = "sqlite3:///$arrConf[elastix_dbdir]/trunk.db";
-$arrConfModule['dsn_conn_database_2'] = "sqlite3:///$arrConf[elastix_dbdir]/rate.db";
+$arrConfModule['dsn_conn_database_1'] = "sqlite3:///$arrConf[issabel_dbdir]/trunk.db";
+$arrConfModule['dsn_conn_database_2'] = "sqlite3:///$arrConf[issabel_dbdir]/rate.db";
 
 ?>

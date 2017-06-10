@@ -57,7 +57,7 @@ function _moduleContent(&$smarty, $module_name)
     $pDB     = new paloDB($dsn);
     $oCDR    = new paloSantoCDR($pDB);
 
-    $pDBACL = new paloDB($arrConf['elastix_dsn']['acl']);
+    $pDBACL = new paloDB($arrConf['issabel_dsn']['acl']);
     if (!empty($pDBACL->errMsg)) {
         return "ERROR DE DB: $pDBACL->errMsg";
     }
@@ -65,7 +65,7 @@ function _moduleContent(&$smarty, $module_name)
     if (!empty($pACL->errMsg)) {
         return "ERROR DE ACL: $pACL->errMsg";
     }
-    $user = $_SESSION['elastix_user'];
+    $user = $_SESSION['issabel_user'];
     $extension = $pACL->getUserExtension($user);
     if ($extension == '') $extension = NULL;
 
@@ -332,7 +332,7 @@ function hasModulePrivilege($user, $module, $privilege)
 {
     global $arrConf;
 
-    $pDB = new paloDB($arrConf['elastix_dsn']['acl']);
+    $pDB = new paloDB($arrConf['issabel_dsn']['acl']);
     $pACL = new paloACL($pDB);
 
     if (method_exists($pACL, 'hasModulePrivilege'))

@@ -228,7 +228,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
         echo ""._tr('ERROR').": $pRate->errMsg <br>";
     }
 
-    $pDBSet = new paloDB($arrConf['elastix_dsn']['settings']);
+    $pDBSet = new paloDB($arrConf['issabel_dsn']['settings']);
     $pDBTrunk = new paloDB($arrConfModule['dsn_conn_database_1']);
     $oTrunk    = new paloTrunk($pDBTrunk);
     $grupos = NULL;

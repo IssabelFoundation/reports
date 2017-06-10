@@ -26,7 +26,7 @@
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
   $Id: index.php,v 1.1 2010-01-15 01:01:20 Eduardo Cueva ecueva@palosanto.com Exp $ */
-//include elastix framework
+//include issabel framework
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoForm.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -56,7 +56,7 @@ function _moduleContent(&$smarty, $module_name)
     $local_templates_dir="$base_dir/modules/$module_name/".$templates_dir.'/'.$arrConf['theme'];
 
     //conexion resource
-    $pDBSet = new paloDB($arrConf['elastix_dsn']['settings']);
+    $pDBSet = new paloDB($arrConf['issabel_dsn']['settings']);
 
     $pConfig = new paloConfig("/etc", "amportal.conf", "=", "[[:space:]]*=[[:space:]]*");
     $arrConfig = $pConfig->leer_configuracion(false);

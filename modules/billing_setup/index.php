@@ -60,7 +60,7 @@ function _moduleContent(&$smarty, $module_name)
     $dsn     = $arrConfig['AMPDBENGINE']['valor'] . "://" . $arrConfig['AMPDBUSER']['valor'] . ":" . $arrConfig['AMPDBPASS']['valor'] . "@" .
                $arrConfig['AMPDBHOST']['valor'] . "/asterisk";
     $pDB     = new paloDB($dsn);
-    $pDBSetting = new paloDB($arrConf['elastix_dsn']['settings']);
+    $pDBSetting = new paloDB($arrConf['issabel_dsn']['settings']);
     $pDBTrunk = new paloDB($arrConfModule['dsn_conn_database_1']);
     $arrForm  = array("default_rate"       => array("LABEL"                   => _tr("Default Rate"),
                                                     "REQUIRED"               => "yes",

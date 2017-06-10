@@ -26,7 +26,7 @@
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
   $Id: index.php,v 1.1 2009-01-06 09:01:38 bmacias bmacias@palosanto.com Exp $ */
-//include elastix framework
+//include issabel framework
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoForm.class.php";
 include_once "libs/misc.lib.php";
@@ -60,7 +60,7 @@ function _moduleContent(&$smarty, $module_name)
                       $arrConfig['AMPDBHOST']['valor']."/asteriskcdrdb";
 
     $pDB_cdr = new paloDB($dsnAsteriskCdr);//asteriskcdrdb -> CDR
-    $pDB_billing = new paloDB("sqlite3:///$arrConf[elastix_dbdir]/rate.db"); //sqlite3 -> rate.db
+    $pDB_billing = new paloDB("sqlite3:///$arrConf[issabel_dbdir]/rate.db"); //sqlite3 -> rate.db
 
     //actions
     $accion = getAction();
