@@ -51,7 +51,7 @@ fi
 
 %post
 pathModule="/usr/share/issabel/module_installer/%{name}-%{version}-%{release}"
-# Run installer script to fix up ACLs and add module to Elastix menus.
+# Run installer script to fix up ACLs and add module to Issabel menus.
 issabel-menumerge /usr/share/issabel/module_installer/%{name}-%{version}-%{release}/menu.xml
 
 pathSQLiteDB="/var/www/db"
