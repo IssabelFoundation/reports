@@ -2,10 +2,15 @@
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  |  Issabel version 0.5                                                 |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | Cdla. Nueva Kennedy Calle E 222 y 9na. Este                          |
+  | Telfs. 2283-268, 2294-440, 2284-356                                  |
+  | Guayaquil - Ecuador                                                  |
+  | http://www.palosanto.com                                             |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
   | (GPL) Version 2 (the "License"); you may not use this file except in |
@@ -17,23 +22,48 @@
   | the License for the specific language governing rights and           |
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
+  | The Original Code is: Elastix Open Source.                           |
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translate by: Bruno Macias                                           |
+  | Email: bmacias@palosanto.com                                         |
   +----------------------------------------------------------------------+
-  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+$Id: br.lang,v 1.0 2017/07/18 rafael@ibinetwork.com.br - Ibinetwork Informática Exp $ */
 global $arrLangModule;
-$arrLangModule = array(
-    "Start Date" => "Data Início",
-    "End Date" => "Data Final",
-    "Field Name" => "Nome do Campo",
-    "Field" => "Campo",
-    "Date" => "Data",
-    "Source" => "Origem",
-    "Destination" => "Destino",
-    "Src. Channel" => "Canal Origem",
-    "Dst. Channel" => "Canal Destino",
-    "Duration" => "Duração",
-    "Filter" => "Filtro",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
-    "Delete" => "Delete the displayed CDR(s)",
+$arrLangModule=array(
+"Start Date"=>"Inicio",
+"End Date"=>"Final",
+"Field Name"=>"Campo",
+"Field"=>"Campo",
+"CDR Report List"=>"Relatório de Ligações",
+"Account Code" => "Protocolo",
+"Date"=>"Data",
+"Source"=>"Origem",
+"Destination"=>"Destino",
+"Src. Channel"=>"Canal de Origem",
+"Dst. Channel"=>"Canal de Destino",
+"Duration"=>"Duração",
+"Filter"=>"Filtro",
+"Are you sure you wish to delete CDR(s) Report(s)?" => "Tem certeza de que deseja excluir o relatório(s) exibido(s)?",
+"Status"=>"Status",
+"ALL" => "TODAS",
+"ANSWERED" => "ATENDIDA",
+"BUSY" => "OCUPADA",
+"FAILED" => "FALHOU",
+"NO ANSWER" => "NÃO ATENDIDA",
+"Delete" => "Apagar ligações exibidas",
+"CDR Report" => "Relatório de Ligações",
+"Please End Date must be greater than Start Date" => "Por favor, a data final tem que ser posterior a data inicial",
+"Ring Group"=>"Grupo de Chamada",
+"(Any ringgroup)"=>"(qualquer)",
+"Your username does not have any extension assigned." => "Seu usuário não possui nenhum ramal atribuído.",
+"contact_admin" => "Não há nenhum ramal associado ao usuário atual. Entre em contato com o administrador para atribuir um ramal",
+"no_extension" => "Não há nenhum ramal associado ao usuário atual. Você pode associar um ramal ao seu usuário clicando <a href=\"javascript: openWindow('index.php?menu=userlist&amp;action=edit_userExtension&amp;rawmode=yes');\"> aqui </a>",
+"Only administrators can delete CDRs" => "Somente administradores podem apagar relatórios de ligações",
+"Show Filter" => "Exibir Filtro",
+"Filter applied" => "Filtro aplicado",
+"Spreadsheet" => "Planilha",
+"Page" => "Página",
+"CDR Report" => "Relatórios",
 );
 ?>
