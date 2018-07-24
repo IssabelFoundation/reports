@@ -8,8 +8,8 @@ Group:   Applications/System
 Source0: %{modname}_%{version}-%{release}.tgz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
-Requires(pre): issabel-framework >= 4.0.0-1
-Requires(pre): asterisk
+Requires: issabel-framework >= 4.0.0-1
+#Requires: asterisk
 Requires: php-jpgraph
 
 Obsoletes: elastix-reports
