@@ -240,8 +240,8 @@ function _moduleContent(&$smarty, $module_name)
         $limit = $total;
         $offset = 0;
 
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"));
-        $oGrid->setColumns($arrColumns);
+       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("outbound_cnum"), _tr("Did"));  
+      $oGrid->setColumns($arrColumns);
 
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
@@ -320,7 +320,13 @@ function _moduleContent(&$smarty, $module_name)
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
                 $arrTmp[8] = $sTiempo;
-                $arrData[] = $arrTmp;
+              //añadido por hgmnetwork.com mejora descarga CDR mostrar mas datos 
+              $arrTmp[9] = $value[6];//uniqueid
+              $arrTmp[10] = $value[12];//Cnum
+              $arrTmp[11] = $value[13];//Cnam
+              $arrTmp[12] = $value[14];//Outbound_cnum
+              $arrTmp[13] = $value[15];//did
+              $arrData[] = $arrTmp;
             }
         }
         if (!is_array($arrResult)) {
