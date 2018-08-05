@@ -240,7 +240,8 @@ function _moduleContent(&$smarty, $module_name)
         $limit = $total;
         $offset = 0;
 
-       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("outbound_cnum"), _tr("Did"));  
+       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("Outbound Cnum"), _tr("DID"));  
+
       $oGrid->setColumns($arrColumns);
 
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
@@ -263,7 +264,15 @@ function _moduleContent(&$smarty, $module_name)
                       if ($iDuracion > 0) $sTiempo .= " ({$iDuracion}h {$iMin}m {$iSec}s)";
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
-                $arrTmp[8] = $sTiempo;
+                $arrTmp[8]  = $sTiempo;
+
+                $arrTmp[9]  = $value[6];  //uniqueid
+                $arrTmp[10] = $value[12]; //recordingfile 
+                $arrTmp[11] = $value[13]; //cnum 
+                $arrTmp[12] = $value[14]; //cnam
+                $arrTmp[13] = $value[15]; //outbound_cnum
+                $arrTmp[14] = $value[16]; //did
+
                 $arrData[] = $arrTmp;
             }
         }
@@ -281,7 +290,7 @@ function _moduleContent(&$smarty, $module_name)
         $offset = $oGrid->calculateOffset();
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"));
+        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid"));
         $oGrid->setColumns($arrColumns);
 
         if(is_array($arrResult['cdrs']) && $total>0){
@@ -320,13 +329,9 @@ function _moduleContent(&$smarty, $module_name)
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
                 $arrTmp[8] = $sTiempo;
-              //añadido por hgmnetwork.com mejora descarga CDR mostrar mas datos 
-              $arrTmp[9] = $value[6];//uniqueid
-              $arrTmp[10] = $value[12];//Cnum
-              $arrTmp[11] = $value[13];//Cnam
-              $arrTmp[12] = $value[14];//Outbound_cnum
-              $arrTmp[13] = $value[15];//did
-              $arrData[] = $arrTmp;
+                $arrTmp[9] = $value[6]; // uniqueid
+
+                $arrData[] = $arrTmp;
             }
         }
         if (!is_array($arrResult)) {
