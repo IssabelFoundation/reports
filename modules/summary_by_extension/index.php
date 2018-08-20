@@ -55,6 +55,18 @@ function _moduleContent(&$smarty, $module_name)
 
     $pDB_cdr = new paloDB($dsnAsteriskCdr);//asteriskcdrdb -> CDR
     $pDB_billing = new paloDB("sqlite3:///$arrConf[issabel_dbdir]/rate.db"); //sqlite3 -> rate.db
+//hgmnetwork.com 20-08-2018 obtenemos la extension del usuario realizamos la consulta para evitar fallo mostrar cualquier extension
+    //conexion resource
+    $arrConf['dsn_conn_database'] = generarDSNSistema('asteriskuser', 'asteriskcdrdb');
+    $pDB = new paloDB($arrConf['dsn_conn_database']);
+    $pDBACL = new paloDB($arrConf['issabel_dsn']['acl']);
+    $pACL = new paloACL($pDBACL);
+    $user = isset($_SESSION['issabel_user'])?$_SESSION['issabel_user']:"";
+    $extension = $pACL->getUserExtension($user);
+//miramos si es admin para que evite revisar las extensiones, admin puede ver todo
+$isAdmin = ($pACL->isUserAdministratorGroup($user) !== FALSE);
+$array_extensiones=explode(";",$extension);//pasamos los valores a un array
+
 
     //actions
     $accion = getAction();
@@ -62,7 +74,7 @@ function _moduleContent(&$smarty, $module_name)
 
     switch($accion){
         case 'graph':
-            $content = graphLinks($smarty, $module_name, $local_templates_dir);
+            $content = graphLinks($smarty, $module_name, $local_templates_dir,$extension,$isAdmin);
             break;
         case 'imageTop10Salientes':
         case 'imageTop10Entrantes':
@@ -135,10 +147,25 @@ function reportReportCall($smarty, $module_name, $local_templates_dir, &$pDB_cdr
 
     $order_type = ($order_type == "desc")?"asc":"desc";
 
+//hgmnetwork.com 20-08-2018 obtenemos la extension del usuario realizamos la consulta para ver si esta permitido 
+    //conexion resource
+    $arrConf['dsn_conn_database'] = generarDSNSistema('asteriskuser', 'asteriskcdrdb');
+    $pDB = new paloDB($arrConf['dsn_conn_database']);
+    $pDBACL = new paloDB($arrConf['issabel_dsn']['acl']);
+    $pACL = new paloACL($pDBACL);
+    $user = isset($_SESSION['issabel_user'])?$_SESSION['issabel_user']:"";
+    $extension = $pACL->getUserExtension($user);
+//miramos si es admin para que evite revisar las extensiones, admin puede ver todo
+$isAdmin = ($pACL->isUserAdministratorGroup($user) !== FALSE);
+$array_extensiones=explode(";",$extension);//pasamos los valores a un array
+
+	
     if(is_array($arrResult) && $total>0){
         foreach($arrResult as $key => $val){
             $ext = $val['extension'];
-
+    	    //hgmnetwork.com - si es admin metemos todas las extensiones en el array_Extensiones ya que ve todas
+	    if ($isAdmin==1){ $array_extensiones[]=$ext;};//si es admin, metemos cada extension en el bucle dentro para que luego el in_array le de ok
+	    if (in_array($ext,$array_extensiones)){
             $arrTmp[0] = $ext;
             $arrTmp[1] = $val['user_name'];
             $arrTmp[2] = $val['num_incoming_call'];
@@ -149,7 +176,8 @@ function reportReportCall($smarty, $module_name, $local_templates_dir, &$pDB_cdr
                     ""._tr('Call Details')."</a>";
 
             $arrData[] = $arrTmp;
-        }
+	    };
+	}
     }
     $img = "<img src='images/flecha_$order_type.png' border='0' align='absmiddle'>";
 
@@ -262,9 +290,15 @@ function createFieldForm(){
     return $arrFormElements;
 }
 
-function graphLinks($smarty, $module_name, $local_templates_dir)
+function graphLinks($smarty, $module_name, $local_templates_dir,$extension,$isAdmin)
 {
     $getParams = array('ext', 'dini', 'dfin');
+
+//hgmnetwork.com fallo de seguridad 20-08-2018 permite ver cualquier extension pasada por GET revisamos previamente las extensiones del usuario o si es admin
+$array_extensiones=explode(";",$extension);//pasamos los valores a un array
+
+if (in_array($_GET['ext'],$array_extensiones) OR $isAdmin==1){
+	
     foreach ($getParams as $k) if (!isset($_GET[$k])) $_GET[$k] = '';
     $urlEntrantes = construirURL(array(
         'module'    =>  $module_name,
@@ -294,6 +328,13 @@ function graphLinks($smarty, $module_name, $local_templates_dir)
 </html>
 PLANTILLA_GRAPH;
     return $sPlantilla;
+} else {
+//hgmnetwork.com 20-08-2018 no autorizado a ver el grafico de esa extension
+Header('HTTP/1.1 403 Forbidden');
+            die("<b>403 "._tr("No estas autorizado a ver este gráfico, la extensión ".$_GET['ext'].", No existe o no tienes Acceso.")." </b>");
+
+};//Fin de si esta en el array
+
 }
 
 function executeImage($module_name, $sImage)
