@@ -236,7 +236,7 @@ SQL_COND_EXTENSION;
         // Los datos de los registros, respetando limit y offset
         $sPeticionSQL = 
             'SELECT calldate, src, dst, channel, dstchannel, disposition, '.
-                'uniqueid, duration, billsec, accountcode, grpnum, description, recordingfile, cnum, cnam, outbound_cnum, did  '.
+                'uniqueid, duration, billsec, accountcode, grpnum, description, recordingfile, cnum, cnam, outbound_cnum, did, userfield '.
             'FROM cdr '.
             'LEFT JOIN asterisk.ringgroups '.
                 'ON asteriskcdrdb.cdr.dst = asterisk.ringgroups.grpnum '.
