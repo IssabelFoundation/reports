@@ -171,6 +171,8 @@ function _moduleContent(&$smarty, $module_name)
         $valueStatus = $arrFormElements['status']["INPUT_EXTRA_PARAM"][$paramFiltro['status']];
         $valueRingGRoup = $arrFormElements['ringgroup']["INPUT_EXTRA_PARAM"][$paramFiltro['ringgroup']];
 
+//hgmnetwork.com para aplicar filtro indicar las extensiones que se muestran y el total de resultados 20-08-2018
+    $oGrid->addFilterControl(_tr("Ext: $extension"),$paramFiltro,array($extension),true);
 
     $oGrid->addFilterControl(_tr("Filter applied: ")._tr("Start Date")." = ".$paramFiltro['date_start'].", "._tr("End Date")." = ".
     $paramFiltro['date_end'], $paramFiltro, array('date_start' => date("d M Y"),'date_end' => date("d M Y")),true);
@@ -264,6 +266,12 @@ function _moduleContent(&$smarty, $module_name)
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
                 $arrTmp[8] = $sTiempo;
+                $arrTmp[9] = $value[6];//uniqueid
+                $arrTmp[10] = $value[12];//recording
+                $arrTmp[11] = $value[13];//recording
+                $arrTmp[12] = $value[14];//recording
+                $arrTmp[13] = $value[15];//recording
+
                 $arrData[] = $arrTmp;
             }
         }
