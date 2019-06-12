@@ -57,12 +57,12 @@ function _moduleContent(&$smarty, $module_name)
     }
     $pACL = new paloACL($pDBACL);
     if (!empty($pACL->errMsg)) {
-        return "ERROR DE ACL: $pACL->errMsg";
+      return "ERROR DE ACL: $pACL->errMsg";
     }
     $user = $_SESSION['issabel_user'];
     $extension = $pACL->getUserExtension($user);
     if ($extension == '') $extension = NULL;
-
+//ECHO " USUARIO ES $user y extension es $extension<br>";
     $bPuedeVerTodos = hasModulePrivilege($user, $module_name, 'reportany');
 
     // Sólo el administrador puede consultar con $extension == NULL
@@ -172,7 +172,7 @@ function _moduleContent(&$smarty, $module_name)
         $valueRingGRoup = $arrFormElements['ringgroup']["INPUT_EXTRA_PARAM"][$paramFiltro['ringgroup']];
 
 //hgmnetwork.com para aplicar filtro indicar las extensiones que se muestran y el total de resultados 20-08-2018
-    $oGrid->addFilterControl(_tr("Ext: $extension"),$paramFiltro,array($extension),true);
+$oGrid->addFilterControl(_tr("Ext: $extension"),$paramFiltro,array($extension),true);
 
     $oGrid->addFilterControl(_tr("Filter applied: ")._tr("Start Date")." = ".$paramFiltro['date_start'].", "._tr("End Date")." = ".
     $paramFiltro['date_end'], $paramFiltro, array('date_start' => date("d M Y"),'date_end' => date("d M Y")),true);
@@ -237,16 +237,17 @@ function _moduleContent(&$smarty, $module_name)
 
     $arrData = null;
     $total = $oCDR->contarCDRs($paramFiltro);
-
+//echo "<hr>index.php aqui estamos ok el problema es el total que dice que es contarCDRs y da $total<hr>";
     if($oGrid->isExportAction()){
         $limit = $total;
         $offset = 0;
 
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"));
+        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("outbound_cnum"), _tr("Did"));
         $oGrid->setColumns($arrColumns);
 
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
+//echo "<hr> el totalen index.php  es $total<hr>";
         if(is_array($arrResult['cdrs']) && $total>0){
             foreach($arrResult['cdrs'] as $key => $value){
                 $arrTmp[0] = $value[0];
@@ -266,11 +267,11 @@ function _moduleContent(&$smarty, $module_name)
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
                 $arrTmp[8] = $sTiempo;
-                $arrTmp[9] = $value[6];//uniqueid
-                $arrTmp[10] = $value[12];//recording
-                $arrTmp[11] = $value[13];//recording
-                $arrTmp[12] = $value[14];//recording
-                $arrTmp[13] = $value[15];//recording
+        $arrTmp[9] = $value[6];//uniqueid
+        $arrTmp[10] = $value[12];//recording
+        $arrTmp[11] = $value[13];//recording
+        $arrTmp[12] = $value[14];//recording
+        $arrTmp[13] = $value[15];//recording
 
                 $arrData[] = $arrTmp;
             }
@@ -278,7 +279,7 @@ function _moduleContent(&$smarty, $module_name)
         if (!is_array($arrResult)) {
         $smarty->assign(array(
             'mb_title'      =>  _tr('ERROR'),
-            'mb_message'    =>  $oCDR->errMsg,
+     'mb_message'    =>  $oCDR->errMsg,
         ));
         }
     }else {
@@ -292,6 +293,7 @@ function _moduleContent(&$smarty, $module_name)
         $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"));
         $oGrid->setColumns($arrColumns);
 
+//echo "<hr> aqui en index.php : total es $total <hr>";
         if(is_array($arrResult['cdrs']) && $total>0){
             foreach($arrResult['cdrs'] as $key => $value){
                 $arrTmp[0] = $value[0];
