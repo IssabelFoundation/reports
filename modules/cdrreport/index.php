@@ -113,8 +113,9 @@ function _moduleContent(&$smarty, $module_name)
                                                                "channel"     => _tr("Src. Channel"),
                                                                "accountcode" => _tr("Account Code"),
                                                                "dstchannel"  => _tr("Dst. Channel")),
+                                                               "userfield"   => _tr("User Field")),
                             "VALIDATION_TYPE"        => "ereg",
-                            "VALIDATION_EXTRA_PARAM" => "^(dst|src|channel|dstchannel|accountcode)$"),
+                            "VALIDATION_EXTRA_PARAM" => "^(dst|src|channel|dstchannel|accountcode|userfield)$"),
         "field_pattern" => array("LABEL"                  => _tr("Field"),
                             "REQUIRED"               => "no",
                             "INPUT_TYPE"             => "TEXT",
@@ -240,7 +241,7 @@ function _moduleContent(&$smarty, $module_name)
         $limit = $total;
         $offset = 0;
 
-       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("Outbound Cnum"), _tr("DID"));  
+       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("Outbound Cnum"), _tr("DID"),_tr("User Field"));  
 
       $oGrid->setColumns($arrColumns);
 
@@ -272,7 +273,8 @@ function _moduleContent(&$smarty, $module_name)
                 $arrTmp[12] = $value[14]; //cnam
                 $arrTmp[13] = $value[15]; //outbound_cnum
                 $arrTmp[14] = $value[16]; //did
-
+                $arrTmp[15] = $value[17]; //userfield
+                
                 $arrData[] = $arrTmp;
             }
         }
@@ -290,7 +292,7 @@ function _moduleContent(&$smarty, $module_name)
         $offset = $oGrid->calculateOffset();
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid"));
+        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid")_tr("User Field"));
         $oGrid->setColumns($arrColumns);
 
         if(is_array($arrResult['cdrs']) && $total>0){
@@ -330,7 +332,8 @@ function _moduleContent(&$smarty, $module_name)
                 }
                 $arrTmp[8] = $sTiempo;
                 $arrTmp[9] = $value[6]; // uniqueid
-
+                $arrTmp[10] = $value[17]; // userfield
+                
                 $arrData[] = $arrTmp;
             }
         }
