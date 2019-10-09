@@ -112,7 +112,7 @@ function _moduleContent(&$smarty, $module_name)
                                                                "src"         => _tr("Source"),
                                                                "channel"     => _tr("Src. Channel"),
                                                                "accountcode" => _tr("Account Code"),
-                                                               "dstchannel"  => _tr("Dst. Channel")),
+                                                               "dstchannel"  => _tr("Dst. Channel"),
                                                                "userfield"   => _tr("User Field")),
                             "VALIDATION_TYPE"        => "ereg",
                             "VALIDATION_EXTRA_PARAM" => "^(dst|src|channel|dstchannel|accountcode|userfield)$"),
@@ -292,7 +292,7 @@ function _moduleContent(&$smarty, $module_name)
         $offset = $oGrid->calculateOffset();
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid")_tr("User Field"));
+        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid"),_tr("User Field"));
         $oGrid->setColumns($arrColumns);
 
         if(is_array($arrResult['cdrs']) && $total>0){
