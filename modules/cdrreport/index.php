@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Fri 25 Oct 2019 12:57:00 PM EDT, nicolas@issabel.com
+  $Id: index.php, Fri 25 Oct 2019 04:23:36 PM EDT, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -376,12 +376,21 @@ function _moduleContent(&$smarty, $module_name)
         }
     }
     $smarty->assign('modalClass','modal-lg');
-    $smarty->assign('modalContent','<iframe id="celdetails" src="index.php?menu='.$module_name.'&rawmode=yes&loading=yes" frameborder=0 width="100%" height="300px"></iframe>');
+    $smarty->assign('modalContent','<iframe id="celdetails" onLoad="celFrameLoaded();" src="index.php?menu='.$module_name.'&rawmode=yes&loading=yes" frameborder=0 width="100%" height="100px"></iframe>');
 
     $cel_code = "
         function showCel(uniqueid) {
             $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&uniqueid='+uniqueid);
             $('#gridModal').modal();
+        }
+
+        function celFrameLoaded() {
+            fh = $('#celdetails').contents().find('html').height();
+            if(fh==0) {fh=100;}
+            $('#celdetails').height(fh);
+            $('#gridModal').find('.modal-body').css({
+              height: fh, 
+            });
         }
 
         $('#gridModal').on('hidden.bs.modal', function () {
