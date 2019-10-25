@@ -1,7 +1,67 @@
-alter table cdr add column `recordingfile` varchar(255) NOT NULL DEFAULT '';
-alter table cdr add column `cnum`          varchar(40)  NOT NULL DEFAULT '';
-alter table cdr add column `cnam`          varchar(40)  NOT NULL DEFAULT '';
-alter table cdr add column `outbound_cnum` varchar(40)  NOT NULL DEFAULT '';
-alter table cdr add column `outbound_cnam` varchar(40)  NOT NULL DEFAULT '';
-alter table cdr add column `dst_cnam`      varchar(40)  NOT NULL DEFAULT '';
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE `cdr` ADD COLUMN `recordingfile` varchar(255) NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE `cdr` ADD COLUMN `cnum` varchar(40)  NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE cdr ADD COLUMN `cnam` varchar(40)  NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE cdr ADD COLUMN `outbound_cnum` varchar(40)  NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE cdr ADD COLUMN `outbound_cnam` varchar(40)  NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
+DROP PROCEDURE IF EXISTS `?`;
+DELIMITER //
+CREATE PROCEDURE `?`()
+BEGIN
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
+  ALTER TABLE cdr ADD COLUMN `dst_cnam` varchar(40)  NOT NULL DEFAULT '';
+END //
+DELIMITER ;
+CALL `?`();
+DROP PROCEDURE `?`;
+
 update cdr set recordingfile = replace(userfield,'audio:','');
