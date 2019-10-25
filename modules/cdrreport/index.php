@@ -19,8 +19,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php,v 1.1.1.1 2007/07/06 21:31:21 gcarrillo Exp $ */
-
+  $Id: index.php, Fri 25 Oct 2019 12:57:00 PM EDT, nicolas@issabel.com
+*/
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
 include_once "libs/paloSantoForm.class.php";
@@ -84,8 +84,12 @@ function _moduleContent(&$smarty, $module_name)
     $dataRG = $oRG->getRingGroup();
     $dataRG[''] = _tr('(Any ringgroup)');
 
-
-
+    $disableCel=false;
+    $query  = "DESC asteriskcdrdb.cel";
+    $result = $pDB->genQuery($query);
+    if ($result === false) {
+        $disableCel=true;
+    }
 
     // Cadenas estáticas en la plantilla
     $smarty->assign(array(
@@ -160,6 +164,28 @@ function _moduleContent(&$smarty, $module_name)
     }
 
     $oGrid  = new paloSantoGrid($smarty);
+
+    if(isset($_REQUEST['loading'])) {
+        $content="<html><body><div style='margin:auto; text-align:center'><img src='/modules/$module_name/images/loading.svg'></div>";
+        return $content;
+        die();
+    }
+
+    if(isset($_REQUEST['uniqueid'])) {
+        $oGrid->setTitle(_tr("CDR Events"));
+        $arrColumns =array('eventtime', 'eventtype', 'cid_name', 'cid_num', 'cid_dnid', 'exten', 'appname', 'uniqueid');
+        $columnas = implode(",",$arrColumns);
+        $sPeticionSQL = "SELECT $columnas FROM cel WHERE uniqueid=?";
+        $paramSQL=array($_REQUEST['uniqueid']);
+        $arrData = $pDB->fetchTable($sPeticionSQL, FALSE, $paramSQL);
+        $oGrid->setColumns($arrColumns);
+        $oGrid->setData($arrData);
+        $content = $smarty->fetch("$local_templates_dir/cel.tpl");
+        $content.= $oGrid->fetchGrid();
+        return $content;
+        die();
+    } 
+
     if($paramFiltro['date_start']==="")
         $paramFiltro['date_start']  = " ";
 
@@ -293,6 +319,7 @@ function _moduleContent(&$smarty, $module_name)
         $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
 
         $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid"),_tr("User Field"));
+        if(!$disableCel) { $arrColumns[]=''; }
         $oGrid->setColumns($arrColumns);
 
         if(is_array($arrResult['cdrs']) && $total>0){
@@ -330,9 +357,13 @@ function _moduleContent(&$smarty, $module_name)
                       if ($iDuracion > 0) $sTiempo .= " ({$iDuracion}h {$iMin}m {$iSec}s)";
                       elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
                 }
-                $arrTmp[8] = $sTiempo;
-                $arrTmp[9] = $value[6]; // uniqueid
+                $arrTmp[8]  = $sTiempo;
+                $arrTmp[9]  = $value[6]; // uniqueid
                 $arrTmp[10] = $value[17]; // userfield
+
+                if(!$disableCel) {
+                    $arrTmp[11] = '<a onclick="showCel(\''.$value[6].'\')"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>';
+                }
                 
                 $arrData[] = $arrTmp;
             }
@@ -344,6 +375,22 @@ function _moduleContent(&$smarty, $module_name)
         ));
         }
     }
+    $smarty->assign('modalClass','modal-lg');
+    $smarty->assign('modalContent','<iframe id="celdetails" src="index.php?menu='.$module_name.'&rawmode=yes&loading=yes" frameborder=0 width="100%" height="300px"></iframe>');
+
+    $cel_code = "
+        function showCel(uniqueid) {
+            $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&uniqueid='+uniqueid);
+            $('#gridModal').modal();
+        }
+
+        $('#gridModal').on('hidden.bs.modal', function () {
+            $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&loading=yes');
+        })
+    ";
+
+    $smarty->assign('customJS',$cel_code);
+
     $oGrid->setData($arrData);
     $smarty->assign("SHOW", _tr("Show"));
     $oGrid->showFilter($htmlFilter);
