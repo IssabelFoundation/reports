@@ -19,8 +19,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoCDR.class.php,v 1.1.1.1 2007/07/06 21:31:55 gcarrillo Exp $ */
-
+  $Id: paloSantoCDR.class.php, Fri 22 Nov 2019 05:39:28 PM EST, nicolas@issabel.com
+*/
 class paloSantoCDR
 {
 
@@ -235,7 +235,7 @@ SQL_COND_EXTENSION;
 
         // Los datos de los registros, respetando limit y offset
         $sPeticionSQL = 
-            'SELECT calldate, src, dst, channel, dstchannel, disposition, '.
+            'SELECT calldate, IF(cnum<>src,cnum,src), dst, channel, dstchannel, disposition, '.
                 'uniqueid, duration, billsec, accountcode, grpnum, description, recordingfile, cnum, cnam, outbound_cnum, did, userfield '.
             'FROM cdr '.
             'LEFT JOIN asterisk.ringgroups '.
