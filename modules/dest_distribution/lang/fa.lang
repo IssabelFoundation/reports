@@ -2,9 +2,10 @@
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  | Issabel version 4.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2019 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -18,26 +19,29 @@
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  | Translate by: Haamed Kouhfallah                                      |
+  | Email: k.haamed@gmail.com                                            |
   +----------------------------------------------------------------------+
-  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+  $Id: fa.lang,v 1.1 2019-11-30 04:08:50 Haamed Kouhfallah k.haamed@gmail.com Exp $
+*/
 global $arrLangModule;
-$arrLangModule = array(
-    "Filter" => "فيلتر",
-    "Start Date" => "تاریخ شروع",
-    "End Date" => "تاریخ پایان",
-    "Destination Distribution" => "توزیع مقصد",
-    "Criteria" => "معیار",
-    "Distribution by Time" => "توزيع با زمان",
-    "Distribution by Number of Calls" => "توزيع با تعداد مكالمات",
-    "Distribution by Cost" => "توزيع با هزينه",
-    "Date Range spans maximum number of days" => "محدوده زمانی از بالاترین تعداد روزهای ممکن تعیین شده است",
-    "ERROR" => "خطا",
-    "Minutes" => "دقیقه ها",
-    "Number of Calls" => "تعداد تماس ها",
-    "others" => "موارد دیگر",
-    "Rate Name" => "نام نرخ",
-    "default" => "پیش فرض",
-    "Duration in seconds" => "مدت زمان به ثانیه",
-    "Cost" => "هزینه",
+$arrLangModule=array(
+"Filter" => "نمايش",
+"Start Date" => "تاریخ شروع",
+"End Date" => "تاریخ پایان",
+"Destination Distribution" => "توزیع مقصد",
+"Criteria" => "معیار",
+"Distribution by Time" => "Distribution by Time",
+"Distribution by Number of Calls" => "توزیع با تعداد مکالمات",
+"Distribution by Cost" => "توزیع با هزینه",
+"Date Range spans maximum number of days" => "محدوده زمانی از بالاترین تعداد روزهای ممکن تعیین شده است",
+"ERROR" => "خطا",
+"Minutes" => "دقیقه ها",
+"Number of Calls" => "تعداد تماس ها",
+"others" => "موارد دیگر",
+"Rate Name" => "نام نرخ",
+"default" => "پیش فرض",
+"Duration in seconds" => "مدت زمان به ثانیه",
+"Cost" => "هزینه",
 );
 ?>

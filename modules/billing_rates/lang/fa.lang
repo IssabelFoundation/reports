@@ -2,9 +2,10 @@
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  | Issabel version 4.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2019 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -18,24 +19,67 @@
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  | Translate by: Haamed Kouhfallah                                      |
+  | Email: k.haamed@gmail.com                                            |
   +----------------------------------------------------------------------+
-  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+  $Id: fa.lang,v 1.1 2019-11-30 04:08:50 Haamed Kouhfallah k.haamed@gmail.com Exp $
+*/
 global $arrLangModule;
-$arrLangModule = array(
-    "Prefix" => "پیش شماره ",
-    "Rate" => "نرخ",
-    "Rate Offset" => "نرخ تراز",
-    "New Rate" => "نرخ جدید",
-    "Edit Rate" => "تنظیم نرخ",
-    "View Rate" => "مشاهده نرخ",
-    "View" => "مشاهده",
-    "Rates List" => "لیست نرخ ها",
-    "Trunk" => "ترانک",
-    "Name" => "نام",
-    "Are you sure you wish to continue?" => "آیا مطمئن به ادامه هستید؟",
-    "create_rate" => "ایجاد نرخ جدید",
-    "import_rate" => "وارد کردن فایل",
-    "New_rate" => "نرخ جدید",
-    "This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "This option allows to modify the current rate while keeping the history of the different values this rate has adopted through time (good for keeping the records reflecting the actual value the rate had at a particular time).",
+$arrLangModule=array(
+"Billing Rates" => "نرخ‌هاي صورت حساب",
+"Prefix"=>"پيش شماره",
+"Rate"=>"نرخ",
+"Rate Offset"=>"نرخ تراز",
+"None" => "هيچ كدام",
+"New Rate"=>"نرج جديد",
+"Edit Rate"=>"تغيير نرخ",
+"View Rate"=>"نمايش نرخ",
+"View"=>"نمايش",
+"Rates List"=>"ليست نرخ ها",
+"(by min)" => " (دقيقه)",
+"Create New Rate"=>"ايجاد نرخ جديد",
+"Import File"=>"وارد كردن فايل",
+"Trunk"=>"ترانك",
+"Name"=>"نام",
+"Are you sure you wish to continue?"=>"؟ آيا براي ادامه مطمئن هستيد",
+"create_rate"=>"ايجاد نرخ جديد",
+"import_rate"=>"وارد كردن فايل",
+"Creation Date" => "تاريخ ايجاد",
+"Closing Date" => "تاريخ اتمام",
+"Default" => "پيش فرض",
+"New_rate" => "نرخ جديد",
+"CANCEL" => "انصراف",
+"SAVE" => "ذخيره",
+"REQUIRED_FIELD" => "فيلد‌هاي اجباري",
+"EDIT" => "ويرايش",
+"DELETE" => "حذف",
+"Rate_offset" => "نرخ تراز",
+"Error_new" => "شما بايد تمامي فيلد‌ها را پر نماييد",
+"Error_edit" => "شما بايد تمامي فيلد‌ها را پر نماييد",
+"error_name" => "اين نرخ وجود دارد",
+"File_error" => "خطا در ايجاد نرخ با فايل",
+"Error on line" => "خطا بر روي خط",
+"Invalid_file_extension" => "<b>فرمت فايل نا معتبر-</b> بايد CSV باشد",
+"create_new_rate" => "نرخ جديد ايجاد شد",
+"edit_rate" => "نرخ ويرايش شد",
+"error_prefix" => "پيش شماره با ترانك انتخابي وجود دارد",
+"error" => "خطا در ذخيره سازي، لطفا در وارد كردن اطلاعات دقت نماييد",
+"CONFIRM_CONTINUE" => "آيا مطمئن به حذف نرخ هستيد",
+"deleted" => "نرخ حذف شد",
+"deleted_error" => "بروز مشكل در حذف نرخ‌ها",
+"Hidden_Digits" => "ارقام مخفي",
+"APPLY_CHANGES" => "انجام تغييرات",
+"Validation Error" => "خطاي اعتبار سنجي",
+"error_CVS" => "خطا در ذخيره سازي، لطفا در وارد كردن اطلاعات دقت نماييد",
+"by_min" => "(دقيقه)",
+"alert_import" => "[!]File.csv[/!]&quot;Prefix&quot;,&quot;Name&quot;,&quot;Rate&quot;,&quot;Rate Offset&quot;,&quot;Hidden Digits&quot;,&quot;Trunk&quot;",
+"Date close" => "تاريخ اتمام",
+"Rate History" => "تاريخچه نرخ",
+"Keep history of the current rate" => "تاريخچه اين نرخ را نگهدار",
+"This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "This option allows to modify the current rate while keeping the history of the different values this rate has adopted through time (good for keeping the records reflecting the actual value the rate had at a particular time).",
+"errorUpdateParent" => "خطا در ذخيره سازي، لطفا در وارد كردن اطلاعات دقت نماييد",
+"Status" => "وضعيت",
+"Obsolete" => "غير قابل استفاده",
+"Current" => "درحال حاضر",
 );
 ?>

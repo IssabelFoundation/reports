@@ -2,9 +2,10 @@
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  | Issabel version 4.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2019 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -18,30 +19,41 @@
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  | Translate by: Haamed Kouhfallah                                      |
+  | Email: k.haamed@gmail.com                                            |
   +----------------------------------------------------------------------+
-  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+  $Id: fa.lang,v 1.1 2019-11-30 04:08:50 Haamed Kouhfallah k.haamed@gmail.com Exp $
+*/
 global $arrLangModule;
-$arrLangModule = array(
-    "Start Date" => "تاریخ شروع",
-    "End Date" => "تاریخ پایان",
-    "Field Name" => "نام فیلد",
-    "Field" => "فیلد ",
-    "CDR Report List" => "گزارش ریز مکالمات",
-    "Account Code" => "کد حساب",
-    "Date" => "تاریخ",
-    "Source" => "مبداء",
-    "Destination" => "مقصد",
-    "Src. Channel" => "كانال مبداء",
-    "Dst. Channel" => "کانال مقصد",
-    "Duration" => "مدت",
-    "Filter" => "فيلتر",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
-    "Status" => "وضعیت",
-    "ALL" => "تمامي تماس ها",
-    "ANSWERED" => "پاسخ داده شده",
-    "BUSY" => "مشغول",
-    "FAILED" => "نا موفق",
-    "NO ANSWER" => "پاسخ داده نشده",
-    "Delete" => "Delete the displayed CDR(s)",
+$arrLangModule=array(
+"Start Date" => "تاریخ شروع",
+"End Date" => "تاریخ پایان",
+"Field Name" => "نام فیلد",
+"Field" => "فیلد ",
+"CDR Report List" => "گزارش ریز مکالمات",
+"Account Code" => "کد حساب",
+"Date" => "تاریخ",
+"Source" => "تماس گيرنده",
+"Destination" => "مقصد",
+"Src. Channel" => "كانال ورودي",
+"Dst. Channel" => "کانال مقصد",
+"Duration" => "مدت تماس",
+"Filter" => "نمايش",
+"Are you sure you wish to delete CDR(s) Report(s)?" => "آیا مطمئن به حذف ریز مکالمات هستید؟",
+"Status" => "وضعیت",
+"ALL" => "تمامي تماس ها",
+"ANSWERED" => "پاسخ داده شده",
+"BUSY" => "مشغول",
+"FAILED" => "نا موفق",
+"NO ANSWER" => "پاسخ داده نشده",
+"Delete" => "حذف ريز مكالمات",
+"CDR Report" => "گزارش مكالمات",
+"Please End Date must be greater than Start Date" => "تاريخ اتمام بايد از شروخ بزرگ‌تر باشد",
+"Ring Group"=>"گروه پاسخگو",
+"(Any ringgroup)"=>"(تمامی گروه ها)",
+"Your username does not have any extension assigned." => "کد کاربری شما داخلی وابسته ندارد.",
+"contact_admin" => "کد کاربری شما داخلی وابسته ندارد، لطفا با مدیر سیستم تماس بگیرید.",
+"no_extension" => "کد کاربری شما داخلی وابسته ندارد، می توانید از طریق لینک روبرو یک داخلی انتخاب نمایید. <a href=\"javascript: openWindow('index.php?menu=userlist&amp;action=edit_userExtension&amp;rawmode=yes');\">اینجا</a>",
+"uniqueid" => "كد تماس",
 );
 ?>
