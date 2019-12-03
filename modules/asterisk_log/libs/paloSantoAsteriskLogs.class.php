@@ -2,9 +2,10 @@
   /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 1.1-4                                               |
+  | Issabel version 4.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2019 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -19,8 +20,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: default.conf.php,v 1.1 2008-06-13 04:06:20 Alex Villacís Lasso Exp $ */
-
+  $Id: paloSantoAsteriskLogs.class.php, Tue 03 Dec 2019 04:57:05 PM EST, nicolas@issabel.com
+*/
 include_once "modules/$module_name/libs/LogParser_Full.class.php";
 
 class paloSantoAsteriskLogs {
@@ -50,7 +51,7 @@ class paloSantoAsteriskLogs {
             // Se desactiva la condición porque ya no todas las líneas empiezan con corchete
             if (!(count($lineas) == 0 && !is_null($s) && $s{0} != '[')) {
                 $regs = NULL;
-                if (preg_match('/^\[([\w\s:-]+)\]\s+((\w+)(\[\d+\]\s+\S+\.c:)\s+)?(.*)/', $s, $regs)) {
+                if (preg_match('/^\[([\w\s:-]+)\]\s+((\S+)\s+(\S+\.c:))?\s+(.*)/', $s, $regs)) {
                     $l = array(
                         'offset'=> $pos[1],
                         'fecha' => $regs[1],
