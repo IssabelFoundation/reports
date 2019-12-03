@@ -134,7 +134,7 @@ function report_AsteriskLogs($smarty, $module_name, $local_templates_dir)
 
     $oGrid  = new paloSantoGrid($smarty);
 
-    $iNumLineasPorPagina = 30;
+    $iNumLineasPorPagina = 40;
     $iEstimadoBytesPagina = $iNumLineasPorPagina * 128;
 
     $iOffsetVerdadero = getParameter('offset');
@@ -264,14 +264,37 @@ function report_AsteriskLogs($smarty, $module_name, $local_templates_dir)
     $arrData = null;
     if(is_array($arrResult) && $totalBytes>0){
         foreach($arrResult as $key => $value){
-            $arrTmp[0] = $value['fecha'];
-            $arrTmp[1] = $value['tipo'];
-            $arrTmp[2] = $value['origen'];
-            $arrTmp[3] = $value['linea'];
+            //$partes = preg_split("/\[/",$value['tipo']);
+            $l     = $value['tipo'];
+            $linea = $value['fecha'].' '.$value['tipo'].' '.$value['origen'].' '.$value['linea'];
+            switch (true) {
+                case strpos($l, 'INFO'):
+                    $linea = '<span class="beige">' . $linea . '</span>';
+                    break;
+                case strpos($linea, 'WARNING'):
+                    $linea = '<span class="orange">' . $linea . '</span>';
+                    break;
+                case strpos($linea, 'DEBUG'):
+                    $linea = '<span class="green">' . $linea . '</span>';
+                    break;
+                case strpos($linea, 'UPDATE'):
+                case strpos($linea, 'NOTICE'):
+                    $linea = '<span class="cyan">' . $linea . '</span>';
+                    break;
+                case strpos($linea, 'FATAL'):
+                case strpos($linea, 'CRITICAL'):
+                case strpos($linea, 'ERROR'):
+                    $linea = '<span class="red">' . $linea . '</span>';
+                    break;
+                default:
+                    $linea = $linea;
+                    break;
+            }
+
+            $arrTmp[0] = $linea;
             $arrData[] = $arrTmp;
         }
     }
-
     
     $_POST['offset'] = $offset;
 
@@ -281,7 +304,7 @@ function report_AsteriskLogs($smarty, $module_name, $local_templates_dir)
 
     $htmlFilter = $oFilterForm->fetchForm("$local_templates_dir/filter.tpl", "", $_POST);
     $oGrid->showFilter(trim($htmlFilter));
-    
+    $oGrid->setTplFile("modules/$module_name/themes/default/loglist.tpl"); 
 
     $arrGrid = array("title"    => _tr("Asterisk Logs"),
                     "url"      => $url,

@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoAsteriskLogs.class.php, Tue 03 Dec 2019 04:57:05 PM EST, nicolas@issabel.com
+  $Id: paloSantoAsteriskLogs.class.php, Tue 03 Dec 2019 05:47:44 PM EST, nicolas@issabel.com
 */
 include_once "modules/$module_name/libs/LogParser_Full.class.php";
 
@@ -71,9 +71,8 @@ class paloSantoAsteriskLogs {
                 $l['linea'] = htmlentities($l['linea']);
                 //$l['linea'] = str_replace("\n", "<br/>", $l['linea']);
                 if (!is_null($sCadenaHighlight) && trim($sCadenaHighlight) != '') {
-                    $l['linea'] = str_replace($sCadenaHighlight, "<span style=\"background:#ffff00;\">$sCadenaHighlight</span>", $l['linea']);
+                    $l['linea'] = str_replace($sCadenaHighlight, "<span style=\"background:#ffff00; color:#000;\">$sCadenaHighlight</span>", $l['linea']);
                 }
-                $l['linea'] = '<pre>'.$l['linea'].'</pre>';
                 $lineas[] = $l;
             }
             $pos = $this->astLog->obtenerPosicionMensaje();
