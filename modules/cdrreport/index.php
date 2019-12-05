@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Fri 25 Oct 2019 04:23:36 PM EDT, nicolas@issabel.com
+  $Id: index.php, Thu 05 Dec 2019 03:51:40 PM EST, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -175,8 +175,15 @@ function _moduleContent(&$smarty, $module_name)
         $oGrid->setTitle(_tr("CDR Events"));
         $arrColumns =array('eventtime', 'eventtype', 'cid_name', 'cid_num', 'cid_dnid', 'exten', 'appname', 'uniqueid');
         $columnas = implode(",",$arrColumns);
-        $sPeticionSQL = "SELECT $columnas FROM cel WHERE uniqueid=?";
+
+        $sPeticionSQL = "SELECT linkedid FROM cel WHERE uniqueid=? LIMIT 1";
         $paramSQL=array($_REQUEST['uniqueid']);
+        $arrData = $pDB->fetchTable($sPeticionSQL, FALSE, $paramSQL);
+        $linkedId = $arrData[0][0];
+
+        $sPeticionSQL = "SELECT $columnas FROM cel WHERE linkedid=?";
+        $paramSQL = array($linkedId);
+
         $arrData = $pDB->fetchTable($sPeticionSQL, FALSE, $paramSQL);
         $oGrid->setColumns($arrColumns);
         $oGrid->setData($arrData);
@@ -184,7 +191,7 @@ function _moduleContent(&$smarty, $module_name)
         $content.= $oGrid->fetchGrid();
         return $content;
         die();
-    } 
+    }
 
     if($paramFiltro['date_start']==="")
         $paramFiltro['date_start']  = " ";
