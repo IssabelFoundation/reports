@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Thu 05 Dec 2019 03:51:40 PM EST, nicolas@issabel.com
+  $Id: index.php, Wed 10 Jun 2020 11:31:40 PM EDT, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -388,7 +388,7 @@ function _moduleContent(&$smarty, $module_name)
     $cel_code = "
         function showCel(uniqueid) {
             $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&uniqueid='+uniqueid);
-            $('#gridModal').modal();
+            $('#gridModal').modal().css('top',$(window).scrollTop());
         }
 
         function celFrameLoaded() {
