@@ -32,7 +32,7 @@ $arrLangModule = array(
     "Src. Channel" => "Iz katerega kanala",
     "Dst. Channel" => "V kateri kanal",
     "Duration" => "Trajanje",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
-    "Delete" => "Delete the displayed CDR(s)",
+    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the selected CDR(s)?",
+    "Delete" => "Delete the selected CDR(s)",
 );
 ?>

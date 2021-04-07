@@ -19,9 +19,6 @@
         <td><input class="button" type="submit" name="show" value="{$SHOW}"></td>
     </tr>
 </table>
-<table class="tabForm" style="font-size: 16px;" width="100%" border="0" height="160px">
-        {$ruta_img}
-</table>
 <input type="hidden" name="nav" value="{$nav_value}" />
 <input type="hidden" name="start" value="{$start_value}" />
 <input type="hidden" name="date_1" value="{$date_1}" />
@@ -30,6 +27,8 @@
 <!--// solo para que pase el error llamado del popup --> 
 <input type="hidden" name="phone_type" id="phone_type"  value="" />
 <input type="hidden" name="phone_id" id="phone_id" value="" />
+
+</br>
 
 {literal}
 <script type= "text/javascript">

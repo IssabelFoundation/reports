@@ -38,6 +38,7 @@ function _moduleContent(&$smarty, $module_name)
     include_once "libs/paloSantoGrid.class.php";
     include_once "libs/paloSantoForm.class.php";
     include_once "libs/paloSantoConfig.class.php";
+    include_once "libs/paloSantoQueue.class.php";
 
     //include module files
     include_once "modules/$module_name/configs/default.conf.php";
@@ -238,24 +239,92 @@ function report_Extention($smarty, $module_name, $local_templates_dir, $pDB_cdr,
             $numOut = $result['num_outgoing_call'];
             $numTot = $numIn + $numOut;
         }
+        if ($numTot != 0) {
+            $noData = "";
+        } else {
+            $noData = _tr("There are no data to present");
+        }
 
         if($numIn != 0) $VALUE = (int)( 100*( $numIn/$numTot ) );
         else $VALUE = 0;
+        $chartLabels = _tr("Incoming Calls").', '._tr("Outcoming Calls");
+        $chartData = $numIn.', '.$numOut;
+        $smarty->assign("chartTitle",_tr("Number of calls extension").' '.$ext2);
+        $smarty->assign("chartLabels", $chartLabels);
+        $smarty->assign("chartData", $chartData);
+        $smarty->assign("Chart","extension");
+        $smarty->assign("noData",$noData);
+        $tpl = "extension.tpl";
 
         $ruta_img = array("?menu={$module_name}&amp;action=grafic&amp;du={$VALUE}%&amp;in={$numIn}&amp;out={$numOut}&amp;ext={$ext2}&amp;tot={$numTot}&amp;rawmode=yes");
     } else if($option == "Queue") {
         $smarty->assign("SELECTED_1","");
         $smarty->assign("SELECTED_2","selected");
         $smarty->assign("SELECTED_3","");
+        $dti   = isset($_GET['dti'])?$_GET['dti']:"";//fecha inicio
+        $dtf   = isset($_GET['dtf'])?$_GET['dtf']:"";//fecha fin
+        $objPalo_AST_CDR = new paloSantoExtention($pDB_cdr);
+        $paloQueue = new paloQueue($pDB_ext);
+        $arrQueues = $paloQueue->getQueue();
+        foreach($arrQueues as $k => $arrMuestra){
+        //    $arrTimestamp[$k] = $k; /* X */
+
+            //$arr = $objPalo_AST_CDR->countQueue( $arrMuestra['id'], $dti, $dtf);
+            $arrQueueName[$k] = $arrMuestra[1];
+            $arr = $objPalo_AST_CDR->countQueue( $arrMuestra[0], $date_ini2, $date_fin2);
+            $arrValue[$k] = $arr[0]; /* Y */
+        }
+        //$dump = grafic_queue($pDB_cdr, $pDB_ext, $queue, $date_ini2, $date_fin2);
+        $smarty->assign("chartTitle",_tr("Number Calls vs Queues"));
+        $smarty->assign("chartLabels",implode(",",$arrQueueName));
+        $smarty->assign("chartData",implode(",",$arrValue));
+        $smarty->assign("Chart","queue");
+        $smarty->assign("noData","");
 
         $ruta_img = array("?menu={$module_name}&amp;action=grafic_queue&amp;queue={$ext2}&amp;dti={$date_ini2}&amp;dtf={$date_fin2}&amp;rawmode=yes");
     } else if($option == "Trunk") {
         $smarty->assign("SELECTED_1","");
         $smarty->assign("SELECTED_2","");
         $smarty->assign("SELECTED_3","selected");
-
         $trunkT = getParameter("trunks");
         $smarty->assign("trunks", $trunkT);
+        
+        $regs = NULL;
+        if (preg_match('!^DAHDI/(g|r)(\d+)$!i', $trunkT, $regs)) {
+             $iGrupoTrunk = (int)$regs[2];
+             $gruposTrunk = getTrunkGroupsDAHDI();
+             if (is_array($gruposTrunk) && isset($gruposTrunk[$iGrupoTrunk])) {
+                 $trunkT = $gruposTrunk[$iGrupoTrunk];
+             }
+        }
+        $objPalo_AST_CDR_Trunk = new paloSantoExtention($pDB_cdr);
+
+        //total minutos de llamadas in y out
+        $chartTitle = $trunkT.': '._tr("Total Time");
+        $chartLabels = _tr("Incoming Calls").", "._tr("Outcoming Calls");
+        $arrayTemp = $objPalo_AST_CDR_Trunk->loadTrunks($trunkT, "min", $date_ini2, $date_fin2);
+        $arrTrunkMin = $arrayTemp[0];
+        //total llamadas in y out
+        $chartTitle2 = $trunkT.': '._tr("Number of Calls");
+        $arrayTemp = $objPalo_AST_CDR_Trunk->loadTrunks($trunkT, "numcall", $date_ini2, $date_fin2);
+        $arrTrunkNum = $arrayTemp[0];
+
+        $numTot = $arrTrunkNum[0] + $arrTrunkNum[1];
+        if ($numTot != 0) {
+            $noData = "0";
+        } else {
+            $noData = _tr("There are no data to present");
+        }
+        
+
+        $smarty->assign("chartTitle",$chartTitle);
+        $smarty->assign("chartTitle2",$chartTitle2);
+        $smarty->assign("chartLabels",$chartLabels);
+        $smarty->assign("chartData",implode(",",$arrTrunkMin));
+        $smarty->assign("chartData2",implode(",",$arrTrunkNum));
+        $smarty->assign("Chart","trunk");
+        $smarty->assign("noData",$noData);
+
         $ruta_img  = array(
             "?menu={$module_name}&amp;action=grafic_trunk&amp;trunk={$trunkT}&amp;dti={$date_ini2}&amp;dtf={$date_fin2}&amp;rawmode=yes",
             "?menu={$module_name}&amp;action=grafic_trunk2&amp;trunk={$trunkT}&amp;dti={$date_ini2}&amp;dtf={$date_fin2}&amp;rawmode=yes");
@@ -272,6 +341,13 @@ function report_Extention($smarty, $module_name, $local_templates_dir, $pDB_cdr,
     $htmlForm = $oFilterForm->fetchForm("$local_templates_dir/filter.tpl", _tr("Graphic Report"), $_POST);
 
     $contenidoModulo = "<form  method='POST' style='margin-bottom:0;' action='?menu=$module_name'>".$htmlForm."</form>";
+
+    //$chartLabels = '"'._tr("Incoming Calls").'"'.', '.'"'._tr("Outcoming Calls").'"';
+    //$chartData = $numIn.', '.$numOut;
+    //$smarty->assign("chartLabels", $chartLabels);
+    //$smarty->assign("chartData", $chartData);
+    
+    $contenidoModulo .= $smarty->fetch("$local_templates_dir/extension.tpl");
 
     return $contenidoModulo;
 }
@@ -424,7 +500,6 @@ function grafic_queue(&$pDB_ast_cdr, &$pDB_ast, $queue, $dti, $dtf)
     include_once "libs/paloSantoQueue.class.php";
     $paloQueue = new paloQueue($pDB_ast);
     $arrResult = ( strlen($queue) != 0 )?$paloQueue->getQueue($queue):$paloQueue->getQueue();
-
     //$arrResult
     //Array ( [0] => Array ( [0] => 2000 [1] => 2000 Recepcion )
     //        [1] => Array ( [0] => 5000 [1] => 5000 Soporte )

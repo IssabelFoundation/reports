@@ -43,7 +43,7 @@ class paloSantoCDR
         }
     }
 
-    private function _construirWhereCDR($param)
+    private function _construirWhereCDR($param, $filterLocalChannel)
     {
         $condSQL = array();
         $paramSQL = array();
@@ -79,6 +79,15 @@ class paloSantoCDR
         }
         
         // Estado de la llamada
+        if (isset($param['uniqueid']) && $param['uniqueid'] != '') {
+            $uniques = preg_split("/,/",$param['uniqueid']);
+            $uns=array();
+            foreach($uniques as $un) {
+               $uns[]=mysql_real_escape_string($un);
+            }
+            $uniques = implode("','",$uns);
+            $condSQL[] = 'uniqueid IN (\'' . $uniques . '\')';
+        }
         if (isset($param['status']) && $param['status'] != 'ALL') {
             $condSQL[] = 'disposition = ?';
             $paramSQL[] = $param['status'];
@@ -100,7 +109,7 @@ SQL_COND_EXTENSION;
 
         // Grupo de timbrado
         if (isset($param['ringgroup'])) {
-        	$condSQL[] = 'grpnum = ?';
+        	$condSQL[] = 'dst = ?';
             $paramSQL[] = $param['ringgroup'];
         }
         
@@ -168,10 +177,16 @@ SQL_COND_EXTENSION;
             
             $condSQL[] = '('.implode(' OR ', $fieldSQL).')';
         }
+        
+        //Filter local channels ;2 from channel field
+        if ($filterLocalChannel) {
+            $condSQL[] = "channel NOT LIKE 'Local/%;2'";
+        }   
 
         // Construir fragmento completo de sentencia SQL
         $where = array(implode(' AND ', $condSQL), $paramSQL);
         if ($where[0] != '') $where[0] = 'WHERE '.$where[0];
+
         return $where;
     }
 
@@ -211,10 +226,10 @@ SQL_COND_EXTENSION;
      *                      calldate, src, dst, channel, dstchannel, disposition, 
      *                      uniqueid, duration, billsec, accountcode
      */
-    function listarCDRs($param,$limit = NULL, $offset = 0)
+    function listarCDRs($param,$limit = NULL, $offset = 0, $filterLocalChannel)
     {
         $resultado = array();
-        list($sWhere, $paramSQL) = $this->_construirWhereCDR($param);
+        list($sWhere, $paramSQL) = $this->_construirWhereCDR($param, $filterLocalChannel);
         if (is_null($sWhere)) return NULL;
         // Cuenta del total de registros recuperados
         $sPeticionSQL = 
@@ -235,11 +250,13 @@ SQL_COND_EXTENSION;
 
         // Los datos de los registros, respetando limit y offset
         $sPeticionSQL = 
-            'SELECT calldate, IF(cnum<>src,cnum,src), dst, channel, dstchannel, disposition, '.
-                'uniqueid, duration, billsec, accountcode, grpnum, description, recordingfile, cnum, cnam, outbound_cnum, did, userfield '.
+            'SELECT calldate, IF(cnum<>src AND cnum <> "",cnum,src), dst, channel, dstchannel, disposition, '.
+                'uniqueid, duration, billsec, accountcode, grpnum, COALESCE(description, descr), recordingfile, cnum, cnam, outbound_cnum, did, userfield '.
             'FROM cdr '.
             'LEFT JOIN asterisk.ringgroups '.
                 'ON asteriskcdrdb.cdr.dst = asterisk.ringgroups.grpnum '.
+            'LEFT JOIN asterisk.queues_config '.
+                'ON asteriskcdrdb.cdr.dst = asterisk.queues_config.extension '.
             $sWhere.
             ' ORDER BY calldate DESC';
         if (!empty($limit)) {
@@ -300,7 +317,8 @@ SQL_COND_EXTENSION;
     {
         list($sWhere, $paramSQL) = $this->_construirWhereCDR($param);
         if (is_null($sWhere)) return NULL;
-
+        
+        //return $sWhere . ' ' . var_dump($paramSQL); 
         // Borrado de los registros seleccionados
         $sPeticionSQL = 
             'DELETE cdr FROM cdr '.

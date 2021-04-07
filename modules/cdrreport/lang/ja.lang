@@ -34,8 +34,8 @@ $arrLangModule = array(
     "Dst. Channel" => "着信先チャネル",
     "Duration" => "通話時間",
     "Filter" => "抽出条件",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
+    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the selected CDR(s)?",
     "Status" => "状態",
-    "Delete" => "Delete the displayed CDR(s)",
+    "Delete" => "Delete the selected CDR(s)",
 );
 ?>
