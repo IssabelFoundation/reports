@@ -33,7 +33,7 @@ $arrLangModule = array(
     "Dst. Channel" => "目的频道",
     "Duration" => "有效期限",
     "Filter" => "过滤器",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
-    "Delete" => "Delete the displayed CDR(s)",
+    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the selected CDR(s)?",
+    "Delete" => "Delete the selected CDR(s)",
 );
 ?>

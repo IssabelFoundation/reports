@@ -19,18 +19,20 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Wed 10 Jun 2020 11:31:40 PM EDT, nicolas@issabel.com
+  $Id: index.php, Thu 05 Dec 2019 03:51:40 PM EST, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
 include_once "libs/paloSantoForm.class.php";
 include_once "libs/paloSantoConfig.class.php";
 include_once "libs/paloSantoCDR.class.php";
+include_once "libs/paloSantoJSON.class.php";
 require_once "libs/misc.lib.php";
 
 function _moduleContent(&$smarty, $module_name)
 {
     require_once "modules/$module_name/libs/ringgroup.php";
+    require_once "modules/$module_name/libs/queues.php";
 
     //include module files
     include_once "modules/$module_name/configs/default.conf.php";
@@ -45,6 +47,9 @@ function _moduleContent(&$smarty, $module_name)
     $base_dir=dirname($_SERVER['SCRIPT_FILENAME']);
     $templates_dir=(isset($arrConf['templates_dir']))?$arrConf['templates_dir']:'themes';
     $local_templates_dir="$base_dir/modules/$module_name/".$templates_dir.'/'.$arrConf['theme'];
+    
+    //Filter local channels ;2 from channel field
+    $filterLocalChannel = true;
 
     // DSN para consulta de cdrs
     $dsn = generarDSNSistema('asteriskuser', 'asteriskcdrdb');
@@ -82,6 +87,9 @@ function _moduleContent(&$smarty, $module_name)
     $pDB_asterisk=new paloDB($dsn_asterisk);
     $oRG    = new RingGroup($pDB_asterisk);
     $dataRG = $oRG->getRingGroup();
+    $oQueue = new Queue($pDB_asterisk);
+    $dataQueue = $oQueue->getQueue();
+    $dataRG = $dataRG + $dataQueue;
     $dataRG[''] = _tr('(Any ringgroup)');
 
     $disableCel=false;
@@ -90,7 +98,6 @@ function _moduleContent(&$smarty, $module_name)
     if ($result === false) {
         $disableCel=true;
     }
-
     // Cadenas estáticas en la plantilla
     $smarty->assign(array(
         "Filter"    =>  _tr("Filter"),
@@ -134,13 +141,30 @@ function _moduleContent(&$smarty, $module_name)
                                                         "ANSWERED"    => _tr("ANSWERED"),
                                                         "BUSY"        => _tr("BUSY"),
                                                         "FAILED"      => _tr("FAILED"),
-                                                        "NO ANSWER "  => _tr("NO ANSWER")),
+                                                        "NO ANSWER"  => _tr("NO ANSWER")),
                             "VALIDATION_TYPE"        => "text",
                             "VALIDATION_EXTRA_PARAM" => ""),
         "ringgroup"  => array("LABEL"                  => _tr("Ring Group"),
                             "REQUIRED"               => "no",
                             "INPUT_TYPE"             => "SELECT",
                             "INPUT_EXTRA_PARAM"      => $dataRG ,
+                            "VALIDATION_TYPE"        => "text",
+                            "VALIDATION_EXTRA_PARAM" => ""),
+         "queue"  => array("LABEL"                  => _tr("Queue"),
+                            "REQUIRED"               => "no",
+                            "INPUT_TYPE"             => "SELECT",
+                            "INPUT_EXTRA_PARAM"      => $dataQueue ,
+                            "VALIDATION_TYPE"        => "text",
+                            "VALIDATION_EXTRA_PARAM" => ""),
+        "limit"  => array("LABEL"                  => _tr("Limit"),
+                            "REQUIRED"               => "no",
+                            "INPUT_TYPE"             => "SELECT",
+                            "INPUT_EXTRA_PARAM"      => array(
+                                                        "100000"         => _tr("100.000"),
+                                                        "50000"    => _tr("50.000"),
+                                                        "20000"        => _tr("20.000"),
+                                                        "10000"      => _tr("10.000"),
+                                                        "1000"  => _tr("1.000")),
                             "VALIDATION_TYPE"        => "text",
                             "VALIDATION_EXTRA_PARAM" => ""),
         );
@@ -156,6 +180,7 @@ function _moduleContent(&$smarty, $module_name)
         'field_pattern' => '',
         'status'        => 'ALL',
         'ringgroup'     =>  '',
+        'limit'         => '100000',
     );
     foreach (array_keys($paramFiltro) as $k) {
         if (!is_null(getParameter($k))){
@@ -205,18 +230,6 @@ function _moduleContent(&$smarty, $module_name)
         $valueStatus = $arrFormElements['status']["INPUT_EXTRA_PARAM"][$paramFiltro['status']];
         $valueRingGRoup = $arrFormElements['ringgroup']["INPUT_EXTRA_PARAM"][$paramFiltro['ringgroup']];
 
-
-    $oGrid->addFilterControl(_tr("Filter applied: ")._tr("Start Date")." = ".$paramFiltro['date_start'].", "._tr("End Date")." = ".
-    $paramFiltro['date_end'], $paramFiltro, array('date_start' => date("d M Y"),'date_end' => date("d M Y")),true);
-
-    $oGrid->addFilterControl(_tr("Filter applied: ").$valueFieldName." = ".$paramFiltro['field_pattern'],$paramFiltro, array('field_name' => "dst",'field_pattern' => ""));
-
-    $oGrid->addFilterControl(_tr("Filter applied: ")._tr("Status")." = ".$valueStatus,$paramFiltro, array('status' => 'ALL'),true);
-
-    $oGrid->addFilterControl(_tr("Filter applied: ")._tr("Ring Group")." = ".$valueRingGRoup,$paramFiltro, array('ringgroup' => ''));
-
-
-    $htmlFilter = $oFilterForm->fetchForm("$local_templates_dir/filter.tpl", "", $paramFiltro);
     if (!$oFilterForm->validateForm($paramFiltro)) {
         $smarty->assign(array(
             'mb_title'      =>  _tr('Validation Error'),
@@ -239,7 +252,9 @@ function _moduleContent(&$smarty, $module_name)
     if (isset($_POST['delete'])) {
         if ($bPuedeBorrar) {
             if ($paramFiltro['date_start'] <= $paramFiltro['date_end']) {
+                $paramFiltro['uniqueid'] = $_POST['UIDsList'];
                 $r = $oCDR->borrarCDRs($paramFiltro);
+                die($r);
                 if (!$r) $smarty->assign(array(
                     'mb_title'      =>  _tr('ERROR'),
                     'mb_message'    =>  $oCDR->errMsg,
@@ -258,76 +273,10 @@ function _moduleContent(&$smarty, $module_name)
         }
     }
 
-    $oGrid->setTitle(_tr("CDR Report"));
-    $oGrid->pagingShow(true); // show paging section.
-
-    $oGrid->enableExport();   // enable export.
-    $oGrid->setNameFile_Export(_tr("CDRReport"));
-    $oGrid->setURL($url);
-    if ($bPuedeBorrar)
-        $oGrid->deleteList("Are you sure you wish to delete CDR(s) Report(s)?","delete",_tr("Delete"));
-
     $arrData = null;
-    $total = $oCDR->contarCDRs($paramFiltro);
-
-    if($oGrid->isExportAction()){
-        $limit = $total;
-        $offset = 0;
-
-       $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("Outbound Cnum"), _tr("DID"),_tr("User Field"));  
-
-      $oGrid->setColumns($arrColumns);
-
-        $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
-
-        if(is_array($arrResult['cdrs']) && $total>0){
-            foreach($arrResult['cdrs'] as $key => $value){
-                $arrTmp[0] = $value[0];
-                $arrTmp[1] = $value[1];
-                $arrTmp[2] = $value[11];
-                $arrTmp[3] = $value[2];
-                $arrTmp[4] = $value[3];
-                $arrTmp[5] = $value[9];
-                $arrTmp[6] = $value[4];
-                $arrTmp[7] = $value[5];
-                $iDuracion = $value[8];
-                $iSec = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iSec) / 60);
-                $iMin = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iMin) / 60);
-                $sTiempo = "{$value[8]}s";
-                if ($value[8] >= 60) {
-                      if ($iDuracion > 0) $sTiempo .= " ({$iDuracion}h {$iMin}m {$iSec}s)";
-                      elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
-                }
-                $arrTmp[8]  = $sTiempo;
-
-                $arrTmp[9]  = $value[6];  //uniqueid
-                $arrTmp[10] = $value[12]; //recordingfile 
-                $arrTmp[11] = $value[13]; //cnum 
-                $arrTmp[12] = $value[14]; //cnam
-                $arrTmp[13] = $value[15]; //outbound_cnum
-                $arrTmp[14] = $value[16]; //did
-                $arrTmp[15] = $value[17]; //userfield
-                
-                $arrData[] = $arrTmp;
-            }
-        }
-        if (!is_array($arrResult)) {
-        $smarty->assign(array(
-            'mb_title'      =>  _tr('ERROR'),
-            'mb_message'    =>  $oCDR->errMsg,
-        ));
-        }
-    }else {
-        $limit = 20;
-        $oGrid->setLimit($limit);
-        $oGrid->setTotal($total);
-
-        $offset = $oGrid->calculateOffset();
-        $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset);
-
-        $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("Uniqueid"),_tr("User Field"));
-        if(!$disableCel) { $arrColumns[]=''; }
-        $oGrid->setColumns($arrColumns);
+        $limit = $paramFiltro['limit'];
+        $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, $offset, $filterLocalChannel);
+        $total = count($arrResult['cdrs']);
 
         if(is_array($arrResult['cdrs']) && $total>0){
             foreach($arrResult['cdrs'] as $key => $value){
@@ -361,20 +310,20 @@ function _moduleContent(&$smarty, $module_name)
                 $iMin = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iMin) / 60);
                 $sTiempo = "{$value[8]}s";
                 if ($value[8] >= 60) {
-                      if ($iDuracion > 0) $sTiempo .= " ({$iDuracion}h {$iMin}m {$iSec}s)";
-                      elseif ($iMin > 0)  $sTiempo .= " ({$iMin}m {$iSec}s)";
+                      if ($iDuracion > 0) $sTiempo = "{$iDuracion}h {$iMin}m {$iSec}s";
+                      elseif ($iMin > 0)  $sTiempo = "{$iMin}m {$iSec}s";
                 }
                 $arrTmp[8]  = $sTiempo;
                 $arrTmp[9]  = $value[6]; // uniqueid
                 $arrTmp[10] = $value[17]; // userfield
 
                 if(!$disableCel) {
-                    $arrTmp[11] = '<a onclick="showCel(\''.$value[6].'\')"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>';
+                    $arrTmp[11] = '<a onclick="showCel(\''.$value[6].'\')"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> </a>';
                 }
                 
                 $arrData[] = $arrTmp;
             }
-        }
+
         if (!is_array($arrResult)) {
         $smarty->assign(array(
             'mb_title'      =>  _tr('ERROR'),
@@ -388,7 +337,7 @@ function _moduleContent(&$smarty, $module_name)
     $cel_code = "
         function showCel(uniqueid) {
             $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&uniqueid='+uniqueid);
-            $('#gridModal').modal().css('top',$(window).scrollTop());
+            $('#gridModal').modal();
         }
 
         function celFrameLoaded() {
@@ -403,14 +352,54 @@ function _moduleContent(&$smarty, $module_name)
         $('#gridModal').on('hidden.bs.modal', function () {
             $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&loading=yes');
         })
+        $('#gridModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
     ";
 
     $smarty->assign('customJS',$cel_code);
 
-    $oGrid->setData($arrData);
+    $valueLimit = $arrFormElements['limit']["INPUT_EXTRA_PARAM"][$paramFiltro['limit']];
+    if ($total == $paramFiltro['limit']) {
+        $msgLimit =    '<font color=red>'.
+                       '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>'." ".
+                       _tr("Limit")." = ".$valueLimit.
+                       '</font>';
+    } else {
+        $msgLimit =    '<font color=green>'.
+                       '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>'." ".
+                       _tr("Limit")." = ".$valueLimit.
+                       '</font>';
+    }
+
+    $MsgFilter = "<b>"._tr("Filter applied: ")."</b>".
+    '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>'." ".
+    _tr("Start Date")." = ".$paramFiltro['date_start'].", "._tr("End Date")." = ".
+    $paramFiltro['date_end']." - ".
+    '<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>'." ".
+    $valueFieldName." = ".$paramFiltro['field_pattern']. " - ".
+    '<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>'." ".
+    _tr("Status")." = ".$valueStatus." - ".
+    '<span class="glyphicon glyphicon-list" aria-hidden="true"></span>'." ".
+    _tr("Ring Group")." = ".$valueRingGRoup." - ".
+    $msgLimit;
+
+    $arrColumns = array(_tr("Date"), _tr("Source"), _tr("Ring Group"), _tr("Destination"), _tr("Src. Channel"),_tr("Account Code"),_tr("Dst. Channel"),_tr("Status"),_tr("Duration"),_tr("UniqueID"),_tr("Recording"), _tr("Cnum"),_tr("Cnam"), _tr("Outbound Cnum"), _tr("DID"),_tr("User Field"));
     $smarty->assign("SHOW", _tr("Show"));
-    $oGrid->showFilter($htmlFilter);
-    $content = $oGrid->fetchGrid();
+    $smarty->assign("DELMSG", _tr("Are you sure you wish to delete CDR(s) Report(s)?"));
+    $smarty->assign("COLUMNS", $arrColumns);
+    $smarty->assign("FILTER_SHOW"  , _tr("Show Filter"));
+    $smarty->assign("FILTER_MSG"  , $MsgFilter);
+    $smarty->assign("Filter", _tr("Filter"));
+    $lang = get_language();
+    $smarty->assign("LANG",$lang);
+    $smarty->assign("module_name","cdrreport");
+    $smarty->assign($arrFormElements); 
+    $smarty->assign("CDR", json_encode($arrData));
+    $paramFiltro['date_start'] = date('d M Y', strtotime($paramFiltro['date_start']));
+    $paramFiltro['date_end'] = date('d M Y', strtotime($paramFiltro['date_end']));
+    $content = $oFilterForm->fetchForm("$local_templates_dir/filter.tpl", "", $paramFiltro);
+    $content .= $smarty->fetch("$local_templates_dir/datatables.tpl");
     return $content;
 }
 
@@ -432,3 +421,5 @@ function hasModulePrivilege($user, $module, $privilege)
         'deleteany',    // ¿Está autorizado el usuario a borrar CDRs?
     )));
 }
+
+?>

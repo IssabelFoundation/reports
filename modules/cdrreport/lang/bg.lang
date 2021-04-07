@@ -35,13 +35,13 @@ $arrLangModule = array(
     "Dst. Channel" => "Към Линия",
     "Duration" => "Продължителност",
     "Filter" => "Филтър",
-    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the displayed CDR(s)?",
+    "Are you sure you wish to delete CDR(s) Report(s)?" => "Are you sure you wish to delete the selected CDR(s)?",
     "Status" => "Състояние",
     "ALL" => "Всички",
     "ANSWERED" => "Отговорен",
     "BUSY" => "Зает",
     "FAILED" => "Неуспешен",
     "NO ANSWER" => "Без Отговор",
-    "Delete" => "Delete the displayed CDR(s)",
+    "Delete" => "Delete the selected CDR(s)",
 );
 ?>
