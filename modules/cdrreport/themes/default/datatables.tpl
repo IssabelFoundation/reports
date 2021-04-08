@@ -81,11 +81,13 @@ mark {
       <th>{$COLUMNS[8]}</th>
       <th>{$COLUMNS[9]}</th>
       <th>{$COLUMNS[15]}</th>
+      <th>{$COLUMNS[14]}</th>
       <th>CEL</th>
   </tr>
   </thead>
   <tbody>
     <tr>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
