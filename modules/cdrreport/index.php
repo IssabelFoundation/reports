@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Fri 09 Apr 2021 09:42:23 AM EDT, nicolas@issabel.com
+  $Id: index.php, Fri 09 Apr 2021 10:46:33 AM EDT, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -177,6 +177,14 @@ function _moduleContent(&$smarty, $module_name)
                                                         "1000"   => _tr("1.000")),
                             "VALIDATION_TYPE"        => "text",
                             "VALIDATION_EXTRA_PARAM" => ""),
+        "timeInSecs"     => array( 
+                            "LABEL"                  => _tr("Show time in Secs"),
+                            "REQUIRED"               => "no",
+                            "INPUT_TYPE"             => "CHECKBOX",
+                            "INPUT_EXTRA_PARAM"      => "",
+                            "VALIDATION_TYPE"        => "text",
+                            "VALIDATION_EXTRA_PARAM" => "",
+                            "EDITABLE"               => "yes"),
         );
 
     $oFilterForm = new paloForm($smarty, $arrFormElements);
@@ -191,6 +199,7 @@ function _moduleContent(&$smarty, $module_name)
         'status'        => 'ALL',
         'ringgroup'     =>  '',
         'limit'         => '100000',
+        'timeInSecs'    => 'off',
     );
     foreach (array_keys($paramFiltro) as $k) {
         if (!is_null(getParameter($k))){
@@ -285,6 +294,7 @@ function _moduleContent(&$smarty, $module_name)
 
     $arrData   = null;
     $limit     = $paramFiltro['limit'];
+    $timeInSecs = $paramFiltro['timeInSecs'];
     $arrResult = $oCDR->listarCDRs($paramFiltro, $limit, 0, $filterLocalChannel);
     $total     = count($arrResult['cdrs']);
 
@@ -316,12 +326,17 @@ function _moduleContent(&$smarty, $module_name)
 
             $arrTmp[7] = $value[5];
             $iDuracion = $value[8];
-            $iSec = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iSec) / 60);
-            $iMin = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iMin) / 60);
-            $sTiempo = "{$value[8]}s";
-            if ($value[8] >= 60) {
-                  if ($iDuracion > 0) $sTiempo = "{$iDuracion}h {$iMin}m {$iSec}s";
-                  elseif ($iMin > 0)  $sTiempo = "{$iMin}m {$iSec}s";
+
+            if ($timeInSecs == "on") {
+                 $sTiempo = $iDuracion;
+            } else {
+                $iSec = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iSec) / 60);
+                $iMin = $iDuracion % 60; $iDuracion = (int)(($iDuracion - $iMin) / 60);
+                $sTiempo = "{$value[8]}s";
+                if ($value[8] >= 60) {
+                      if ($iDuracion > 0) $sTiempo = "{$iDuracion}h {$iMin}m {$iSec}s";
+                      elseif ($iMin > 0)  $sTiempo = "{$iMin}m {$iSec}s";
+                }
             }
             $arrTmp[8]  = $sTiempo;
             $arrTmp[9]  = $value[6];  // uniqueid

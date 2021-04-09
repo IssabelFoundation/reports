@@ -27,7 +27,21 @@
         <td align="right">{$ringgroup.LABEL}: </td>
         <td align="left" nowrap>{$ringgroup.INPUT}</td>
       </tr>
+      <tr class="letra12">
+        <td align="right" nowrap>{$timeInSecs.LABEL}: </td>
+        <td  align="left" nowrap>{$timeInSecs.INPUT}</td>
+      </tr>
    </table>
 </form>
 </div>
 </br>
+<script>
+function timeInSecscheck()
+{
+  if (document.getElementsByName("chkoldtimeInSecs")[0].checked) {
+    document.getElementById("timeInSecs").value="on";
+  } else {
+    document.getElementById("timeInSecs").value="off";
+  }
+}
+</script>
