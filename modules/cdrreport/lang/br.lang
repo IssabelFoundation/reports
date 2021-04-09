@@ -56,5 +56,6 @@ $arrLangModule = array(
   "Spreadsheet" => "Planilha",
   "Page" => "Página",
   "CDR Report" => "Relatórios",
+  "Show time in Secs" => "Mostrar tempo em segundos",
 );
 ?>
