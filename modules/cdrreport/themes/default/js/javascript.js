@@ -1,5 +1,8 @@
 var table;
 $(document).ready( function () {
+    if(typeof(module)=='undefined') {
+        return;
+    }
     table = $('#CDRreport').DataTable( {
     "language": {
                 "url": "/modules/"+module+"/lang/datatables."+lang+".json"
@@ -63,7 +66,7 @@ $(document).ready( function () {
                var date_start = document.getElementsByName("date_start")[0].value;
                var date_end = document.getElementsByName("date_end")[0].value;
                result = true;
-               
+
                $.ajax({
                     url:'./index.php',
                     type: 'post',
@@ -133,16 +136,18 @@ $(document).ready( function () {
 } );
 } );
 
-document.onreadystatechange = function() { 
-            if (document.readyState !== "complete") { 
-                document.querySelector(
-                  "#loader").style.visibility = "visible"; 
-            } else { 
-                document.querySelector( 
-                  "#loader").style.display = "none";
-            } 
-        }; 
+document.onreadystatechange = function() {
 
+    if($('#loader').length > 0) {
+        if (document.readyState !== "complete") {
+             document.querySelector(
+               "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+              "#loader").style.display = "none";
+        }
+    };
+}
 //BuildChart(dates, descrip, ALL_count, ANSWERED_count,NOANSWER_count, BUSY_count, FAILED_count);
 function BuildChart(labels, datalabels, all, answered, noanswer, busy, failed) {
   if (
@@ -200,7 +205,7 @@ function BuildChart(labels, datalabels, all, answered, noanswer, busy, failed) {
     },
     options: {
       responsive: true, // Instruct chart js to respond nicely.
-      maintainAspectRatio: false, // Add to prevent default behavior of full-width/height 
+      maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
       scales: {
         yAxes: [{
             ticks: {
@@ -258,7 +263,7 @@ function buildData() {
                              } )
                              .count();
                  for (var i = 0; i < callstatus.length; i++) {
-                    name = callstatus[i].replace(/\s/g, ''); 
+                    name = callstatus[i].replace(/\s/g, '');
                     window[name+'_total'].push(window[name+'_count']);
                     window[name+'_count'] = 0;
                  }
@@ -267,7 +272,6 @@ function buildData() {
        if (dates.length == 1) {
           if (dates[0] == '') {
               ALL_total[0] = 0;
-              console.log('pasa');
           }
           dates.unshift('');
           dates.push('');
@@ -293,10 +297,10 @@ function downloadPDF2() {
                     pageOrientation: 'landscape',
                     pageSize: 'A4',
                     content: [
-                        {text: 'Issabel CDR Chart', headlineLevel: 1}, 
+                        {text: 'Issabel CDR Chart', headlineLevel: 1},
                         " ",
                         {text: document.getElementById("msgFilter").textContent, headlineLevel: 1},
-                        " ", 
+                        " ",
                         {
                         image: data,
                         width: 750
