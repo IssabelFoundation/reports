@@ -1,0 +1,84 @@
+<?php
+  /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel version 4.0.0-12                                               |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  | Translate by: Mahir GÜL                                              |
+  | Email: mahirgul@gmail.com                                            |
+  +----------------------------------------------------------------------+
+  $Id: en.lang,v 1.1 2021-04-16 20:01:42 mahirgul Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+"Billing Rates" => "Fatura Oranları",
+"Prefix" => "Numara",
+"Rate" => "Fiyat",
+"Rate Offset" => "Başlangıç Ücreti",
+"None" => "Tanımsız",
+"New Rate"=>"Yeni Fiyat",
+"Edit Rate"=>"Fiyat Düzenle",
+"View Rate"=>"Fiyat Göster",
+"View"=>"Göster",
+"Rates List"=>"Fiyat Listesi",
+"(by min)" => " (dakika)",
+"Trunk" => "DışHat",
+"Name" => "İsim",
+"Are you sure you wish to continue?"=>"Devam etmek istiyor musunuz?",
+"create_rate"=>"Yeni Fiyat Oluştur",
+"import_rate"=>"Dosya İçe Aktar",
+"Creation Date" => "Oluşturma Tarihi",
+"Closing Date" => "Bitiş Tarihi",
+"Default" => "Öntanımlı",
+"New_rate" => "Yeni Fiyat",
+"CANCEL" => "İptal",
+"SAVE" => "Kaydet",
+"REQUIRED_FIELD" => "Zorunlu alan",
+"EDIT" => "Düzenle",
+"DELETE" => "Sil",
+"Rate_offset" => "Başlangıç ücreti",
+"Error_new" => "Tüm alanları doldurmalısınız",
+"Error_edit" => "Tüm alanları doldurmalısınız",
+"error_name" => "İsim zaten var",
+"File_error" => "csv dosyasıyla fiyat oluşturulamadı",
+"Error on line" => "Hata satırı ",
+"Invalid_file_extension" => "<b>Hatalı dosya uzantısı.-</b> Mutlaka csv olmalı",
+"create_new_rate" => "Yeni fiyat oluşturuldu",
+"edit_rate" => "Fiyat düzenlendi",
+"error_prefix" => "Aynı dışhatta bu numara zaten var",
+"error" => "Veritabanına yazma hatası. Verilerin doğru olduğunu kontrol ediniz",
+"CONFIRM_CONTINUE" => "Silmek istediğinizden emin misiniz?",
+"deleted" => "Fiyat silindi",
+"deleted_error" => "Veritabanından silme hatası",
+"Hidden_Digits" => "Gizlenen Numaralar",
+"APPLY_CHANGES" => "Değişiklikleri Uygula",
+"Validation Error" => "Doğrulama Hatası",
+"error_CVS" => "Veritabanına yazma hatası. Verilerin doğru olduğunu kontrol edin. csv Dosyasını gözden geçiriniz",
+"by_min" => "(dakika)",
+"alert_import" => "[!]File.csv[/!]&quot;Numara&quot;,&quot;İsim&quot;,&quot;Fiyat&quot;,&quot;Başlangıç Ücreti&quot;,&quot;Gizli Numaralar&quot;,&quot;Dış Hat&quot;",
+"Date close" => "Bitiş tarihi",
+"Rate History" => "Fiyat Tarihçesi",
+"Keep history of the current rate" => "Fiyat tarihçesini kaydet",
+"This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "Bu seçenek, fiyatın sahip olduğu değerleri saklarken mevcut oranı değiştirmeye izin verir (fiyatın belirli bir zamanda sahip olduğu gerçek değeri yansıtan kayıtları tutmak için iyidir).",
+"errorUpdateParent" => "Veritabanına yazma hatası.Lütfen tekrar deneyiniz.",
+"Status" => "Durum",
+"Obsolete" => "Eskimiş",
+"Current" => "Mevcut",
+"File was imported successful" => "Dosya içe aktarma başarılı",
+"Error rate name already exists in database or is duplicated in csv file" => "Fiyat ismi veritabanında var veya csv dosyasında tekrar edilmiş",
+"The prefix already exists with the same Trunk in database or is duplicated in csv file" => "Numara aynı Dışhat için zaten tanımlı veya  csv dosyasında tekrar edilmiş",
+);
+?>
