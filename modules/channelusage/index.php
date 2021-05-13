@@ -5,7 +5,7 @@
   | Issabel version 0.5                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
-  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  | Copyright (c) 2021 Issabel Foundation                                |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
   | (GPL) Version 2 (the "License"); you may not use this file except in |
@@ -19,14 +19,14 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Thu 13 May 2021 06:38:39 PM EDT, nicolas@issabel.com
+  $Id: index.php, Thu 13 May 2021 06:40:42 PM EDT, nicolas@issabel.com
 */
 
 include_once "libs/paloSantoGraphImage.lib.php";
 
-function _moduleContent(&$smarty, $module_name)
-{
-        function getData($id, $getTime=0) {
+function _moduleContent(&$smarty, $module_name) {
+
+    function getData($id, $getTime=0) {
         $chUsage = new paloSantoChannelUsage;
         $hours = array();
         $channels = array();
@@ -56,7 +56,6 @@ function _moduleContent(&$smarty, $module_name)
     global $arrConfModule;
     $arrConf = array_merge($arrConf,$arrConfModule);
 
-
     //folder path for custom templates
     $base_dir=dirname($_SERVER['SCRIPT_FILENAME']);
     $templates_dir=(isset($arrConf['templates_dir']))?$arrConf['templates_dir']:'themes';
@@ -72,18 +71,18 @@ function _moduleContent(&$smarty, $module_name)
     $arrHours = getData(2,1);
     $arrTotal = getData(2);
     $arrDahdi = getData(3);
-    $arrSIP = getData(4);
-    $arrIAX = getData(5);
-    $arrH323 = getData(6);
+    $arrSIP   = getData(4);
+    $arrIAX   = getData(5);
+    $arrH323  = getData(6);
     $arrLocal = getData(7);
-    $smarty->assign("timezone",$timezone);
-    $smarty->assign("hoursJSON",json_encode($arrHours));
-    $smarty->assign("totalJSON",json_encode($arrTotal));
-    $smarty->assign("dahdiJSON",json_encode($arrDahdi));
-    $smarty->assign("sipJSON",json_encode($arrSIP));
-    $smarty->assign("iaxJSON",json_encode($arrIAX));
-    $smarty->assign("h323JSON",json_encode($arrH323));
-    $smarty->assign("localJSON",json_encode($arrLocal));
+    $smarty->assign("timezone", $timezone);
+    $smarty->assign("hoursJSON", json_encode($arrHours));
+    $smarty->assign("totalJSON", json_encode($arrTotal));
+    $smarty->assign("dahdiJSON", json_encode($arrDahdi));
+    $smarty->assign("sipJSON",   json_encode($arrSIP));
+    $smarty->assign("iaxJSON",   json_encode($arrIAX));
+    $smarty->assign("h323JSON",  json_encode($arrH323));
+    $smarty->assign("localJSON", json_encode($arrLocal));
     return $smarty->fetch("$local_templates_dir/charts.tpl");
 }
 ?>
