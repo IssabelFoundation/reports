@@ -19,13 +19,14 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php,v 1.1.1.1 2007/07/06 21:31:21 gcarrillo Exp $ */
+  $Id: index.php, Thu 13 May 2021 06:38:39 PM EDT, nicolas@issabel.com
+*/
 
 include_once "libs/paloSantoGraphImage.lib.php";
 
 function _moduleContent(&$smarty, $module_name)
 {
-        function getData($id, $getTime) {
+        function getData($id, $getTime=0) {
         $chUsage = new paloSantoChannelUsage;
         $hours = array();
         $channels = array();
@@ -37,7 +38,7 @@ function _moduleContent(&$smarty, $module_name)
             array_push($hours,$index*1000);
             array_push($channels,$value);
         }
-        if ($getTime) {
+        if ($getTime==1) {
            return $hours;
         } else {
            return $channels;
