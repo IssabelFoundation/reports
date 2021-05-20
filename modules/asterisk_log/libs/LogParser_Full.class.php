@@ -302,7 +302,7 @@ class LogParser_Full
         // Leer tentativamente las siguientes líneas. Si las líneas no empiezan con corchete,
         // se asume que son continuación del mensaje anterior y se concatenan.
         while (($sContinuacion = fgets($this->_hArchivo)) !== FALSE) {
-            if ($sContinuacion{0} == '[') {
+            if ($sContinuacion[0] == '[') {
                 // Siguiente línea es nuevo mensaje
                 fseek($this->_hArchivo, $iPosArchivo, SEEK_SET);
                 break;
