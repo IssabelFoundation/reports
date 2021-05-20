@@ -8,7 +8,7 @@ require_once $arrConf['basePath']."/libs/paloSantoSampler.class.php";
 
 class paloSantoChannelUsage
 {
-    function paloSantoChannelUsage()
+    function __construct()
     {
     }
 

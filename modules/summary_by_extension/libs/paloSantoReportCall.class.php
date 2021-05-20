@@ -5,6 +5,7 @@
   | Issabel version 1.4-1                                                |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2021 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -19,13 +20,14 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoReportCall.class.php,v 1.1 2009-01-06 09:01:38 jvega jvega@palosanto.com Exp $ */
+  $Id: paloSantoReportCall.class.php, Thu 20 May 2021 08:15:36 AM EDT, nicolas@issabel.com
+*/
 
 class paloSantoReportCall {
     var $_DB_cdr;
     var $errMsg;
 
-    function paloSantoReportCall(&$pDB_cdr, &$pDB_billing=null)
+    function __construct(&$pDB_cdr, &$pDB_billing=null)
     {
         // Se recibe como parámetro una referencia a una conexión paloDB
         if (is_object($pDB_cdr)) {
