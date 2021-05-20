@@ -2,9 +2,10 @@
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  | Issabel version 4.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
+  | Copyright (c) 2021 Issabel Foundation                                |
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
@@ -19,8 +20,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php,v 1.1.1.1 2007/07/06 21:31:56 gcarrillo Exp $ */
-
+  $Id: index.php, Thu 20 May 2021 03:38:21 PM EDT, nicolas@issabel.com
+*/
 function _moduleContent(&$smarty, $module_name)
 {
     include_once "libs/paloSantoGrid.class.php";
@@ -202,7 +203,7 @@ function getTrunksBillFiltrado(&$oDB, &$oTrunk, $arrConfig, &$arrTrunks, &$arrTr
     $t = array();
     if (is_array($arrTrunks)) {
         foreach ($arrTrunks as $tupla) {
-            if (substr($tupla[1], 0, 3) != 'DAHDI' || $tupla[1]{4} == 'g')
+            if (substr($tupla[1], 0, 3) != 'DAHDI' || $tupla[1][4] == 'g')
                 $t[] = $tupla;
         }
         $arrTrunks = $t;

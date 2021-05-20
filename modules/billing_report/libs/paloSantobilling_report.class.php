@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantobilling_report.class.php, Thu 20 May 2021 08:16:54 AM EDT, nicolas@issabel.com
+  $Id: paloSantobilling_report.class.php, Thu 20 May 2021 03:37:42 PM EDT, nicolas@issabel.com
 */
 require_once "libs/misc.lib.php";
 class paloSantobilling_report {
@@ -192,7 +192,7 @@ class paloSantobilling_report {
 
 		  if (is_array($arrTrunks)) {
 			  foreach ($arrTrunks as $tupla) {
-				  if (substr($tupla[1], 0, 3) != 'DAHDI' || $tupla[1]{4} == 'g')
+				  if (substr($tupla[1], 0, 3) != 'DAHDI' || $tupla[1][4] == 'g')
 					  $t[] = $tupla;
 			  }
 			  $arrTrunks = $t;
