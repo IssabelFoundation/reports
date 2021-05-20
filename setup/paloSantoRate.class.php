@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoRate.class.php, Thu 20 May 2021 08:12:31 AM EDT, nicolas@issabel.com
+  $Id: paloSantoRate.class.php, Thu 20 May 2021 09:15:09 AM EDT, nicolas@issabel.com
 */
 
 if (isset($arrConf['basePath'])) {
@@ -185,7 +185,7 @@ class paloRate {
             $bExito = $this->_DB->genQuery($sPeticionSQL);
             if (!$bExito) {
                 $this->errMsg = $this->_DB->errMsg;
-                break;
+                return $bExito;
             }
 
         }
