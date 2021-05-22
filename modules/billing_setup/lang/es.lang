@@ -27,6 +27,6 @@ $arrLangModule = array(
     "Default Rate" => "Tarifa por omisión",
     "Default Rate Offset" => "Tarifa de conexión por omisión",
     "Trunk Bill Configuration" => "Configuración de Troncales para Facturación",
-    "Trunk" => "Troncal",
+    "Trunk" => "Línea Troncal",
 );
 ?>

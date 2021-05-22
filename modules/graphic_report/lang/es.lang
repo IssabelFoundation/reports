@@ -46,6 +46,6 @@ $arrLangModule = array(
     "The extension must be numeric and can not start with zero" => "La extensión debe ser numérica y no puede empezar con cero",
     "Extension (Number)" => "Extensión (Número)",
     "Queue" => "Cola",
-    "Trunk" => "Troncal",
+    "Trunk" => "Línea Troncal",
 );
 ?>
