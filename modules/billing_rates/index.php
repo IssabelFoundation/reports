@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Fri 09 Jul 2021 05:21:23 PM EDT, nicolas@issabel.com
+  $Id: index.php, Fri 09 Jul 2021 06:12:20 PM EDT, nicolas@issabel.com
 */
 //include issabel framework
 include_once "libs/paloSantoGrid.class.php";
@@ -94,8 +94,8 @@ function reportBillingRates($smarty, $module_name, $local_templates_dir, &$pDB, 
     $action = getParameter("nav");
     $start  = getParameter("start");
     $as_csv = getParameter("exportcsv");
-    $arrResult  = "";
-    $arrColumns = "";
+    $arrResult  = array();
+    $arrColumns = array();
 	 //obtain parameters from new rates
 	$prefix_new      = getParameter("Prefix");
 	$name_new        = getParameter("Name");
@@ -525,7 +525,7 @@ function obtainResultOperationRate($smarty, $module_name, $local_templates_dir, 
 		  }
      }
      if($action=="save_import"){
-        $arrErrorMsg = "";
+        $arrErrorMsg = array();
         if(!preg_match('/.*\.csv$/', $_FILES['importcsv']['name'])){
             $smarty->assign("mb_message", _tr("Invalid_file_extension"));
             $content = reportBillingImportRate($smarty, $module_name, $local_templates_dir, $pDB, $pDB2, $pDB3, $arrConf);
@@ -689,7 +689,7 @@ function existName($pBillingRates, $name_new){
 }
 
 function getHiddenDigits(){
-	$arrDigits = "";
+	$arrDigits = array();
 	for($i=0; $i<11; $i++){
 		$arrDigits[$i] = $i;
 	}
