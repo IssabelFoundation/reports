@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoBillingRates.class.php, Thu 20 May 2021 08:14:22 AM EDT, nicolas@issabel.com
+  $Id: paloSantoBillingRates.class.php, Fri 09 Jul 2021 05:04:26 PM EDT, nicolas@issabel.com
 */
 class paloSantoBillingRates {
     var $_DB;
@@ -244,7 +244,7 @@ class paloSantoBillingRates {
 
 	 function getDefaultRates($db){
 		$query = "SELECT * FROM settings";
-		$sal = "";
+		$sal = array();
         $result=$db->fetchTable($query, true);
         if($result==FALSE){
             $this->errMsg = $db->errMsg;
