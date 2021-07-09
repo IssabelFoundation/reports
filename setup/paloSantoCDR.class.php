@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoCDR.class.php, Thu 20 May 2021 08:13:45 AM EDT, nicolas@issabel.com
+  $Id: paloSantoCDR.class.php, Fri 09 Jul 2021 05:44:33 PM EDT, nicolas@issabel.com
 */
 class paloSantoCDR
 {
@@ -227,7 +227,7 @@ SQL_COND_EXTENSION;
      *                      calldate, src, dst, channel, dstchannel, disposition, 
      *                      uniqueid, duration, billsec, accountcode
      */
-    function listarCDRs($param,$limit = NULL, $offset = 0, $filterLocalChannel)
+    function listarCDRs($param,$limit = NULL, $offset = 0, $filterLocalChannel = false)
     {
         $resultado = array();
         list($sWhere, $paramSQL) = $this->_construirWhereCDR($param, $filterLocalChannel);
