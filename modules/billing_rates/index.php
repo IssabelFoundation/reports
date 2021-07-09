@@ -19,7 +19,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php,v 1.1 2010-01-27 02:01:42 Eduardo Cueva ecueva@palosanto.com Exp $ */
+  $Id: index.php, Fri 09 Jul 2021 05:21:23 PM EDT, nicolas@issabel.com
+*/
 //include issabel framework
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoForm.class.php";
@@ -345,12 +346,12 @@ function obtainResultOperationRate($smarty, $module_name, $local_templates_dir, 
     $pBillingRates = new paloSantoBillingRates($pDB);
 
      //obtain parameters from new rates
-     $prefix_new      = getParameter("Prefix");
-     $name_new        = getParameter("Name");
-     $rate_new        = getParameter("Rate");
-     $rate_offset_new = getParameter("Rate_offset");
-     $trunk_new       = getParameter("Trunk");
-     $hidden_digits   = getParameter("Hidden_Digits");
+     $prefix_new      = htmlspecialchars(getParameter("Prefix"));
+     $name_new        = htmlspecialchars(getParameter("Name"));
+     $rate_new        = htmlspecialchars(getParameter("Rate"));
+     $rate_offset_new = htmlspecialchars(getParameter("Rate_offset"));
+     $trunk_new       = htmlspecialchars(getParameter("Trunk"));
+     $hidden_digits   = htmlspecialchars(getParameter("Hidden_Digits"));
      $id              = getParameter("id");
      $edit            = getParameter("namerate");
      $varUpdate       = getParameter("checkUpdate");
