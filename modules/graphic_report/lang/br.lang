@@ -1,0 +1,57 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+   Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel version 1.0                                             |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on "AS IS"     |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translate by: Jonathan Vega                                     |
+  | Email: jvega@palosanto.com                                                        |
+  +----------------------------------------------------------------------+
+  $Id: en.lang,v 1.7 2008/02/18 09:49:00 jvega Exp $
+  $Id: br.lang,v 1.8 2020/05/23 10:00:00 Prisma Telecom Franca SP - leandro@prismatelecom.com $ */
+  
+global $arrLangModule;
+$arrLangModule=array(
+"Incoming Calls" => "Ligações de Entradas",
+"Outcoming Calls" => "Ligações de Saida",
+"Calls" => "Calls",
+"Start date" => "Data Inicial",
+"End date" => "Data Final",
+"Number" => "Numero",
+"Extensions" => "Ramal",
+"Required Field" => "Campo obrigatório",
+"Total Time" => "Tempo total",
+"In calls:" => "Chamadas Entrada:",
+"Out calls:" => "Chamadas Saida:",
+"There are no data to present" => "Não há dados para apresentar",
+"Number of Calls" => "Número de chamadas",
+"Number Calls vs Queues" => "Número de chamadas x Filas",
+"Number of calls extension" => "Extensão de número de chamadas",
+"Here" => "Ramais",
+"Graphic Report" => "Relatório Gráfico",
+"All" => "Todos",
+"Show"=>"Vizualizar",
+"No records found"=>"Sem registros encontrados",
+"No exist calls for this number" => "Não há chamadas disponíveis para este número.",
+"The extension" => "O Ramal",
+"does not have calls yet" => "ainda não tem chamadas.",
+"The extension must be numeric and can not start with zero" => "A extensão deve ser numérica e não pode começar com zero.",
+"Extention(number)" => "Ramal",
+"Validation Error" => "Erro"
+);
+?>

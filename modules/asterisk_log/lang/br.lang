@@ -23,8 +23,13 @@
 global $arrLangModule;
 $arrLangModule = array(
     "Date" => "Data",
-    "Show" => "Mostrar",
+    "Show" => "Vizualizar",
     "Type" => "Tipos",
     "Source" => "Origem",
+    "Search" => "Pesquisar",
+	  "Search string" => "Campo Pesquisa"
+    "Search next" => 'Próxima Pesquisa',
+    "offset" => "offset",
+    "Asterisk Logs" => "Logs Asterisk",
 );
 ?>
