@@ -364,6 +364,9 @@ function _moduleContent(&$smarty, $module_name)
         function showCel(uniqueid) {
             $('#celdetails').attr('src','index.php?menu=".$module_name."&rawmode=yes&uniqueid='+uniqueid);
             $('#gridModal').modal();
+            alto = parent.document.body.clientHeight - 150;
+            $('#gridModal').css('maxHeight',alto);
+            $('#gridModal').css('overflow','scroll');
         }
 
         function celFrameLoaded() {
