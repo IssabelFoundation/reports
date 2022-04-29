@@ -65,23 +65,23 @@ $(document).ready( function () {
                var uidslist = uniqueids.join(",");
                var date_start = document.getElementsByName("date_start")[0].value;
                var date_end = document.getElementsByName("date_end")[0].value;
-               result = true;
 
                $.ajax({
                     url:'./index.php',
                     type: 'post',
-                    data: {delete: 'delete', date_start: date_start, date_end: date_end, UIDsList: uidslist},
+                    data: {rawmode: 'yes', delete: 'delete', date_start: date_start, date_end: date_end, UIDsList: uidslist},
                     success: function(response) {
-                        console.log(response);
+                        if(response!="") {
+                            alert(response);
+                        } else {
+                            var rows = table
+                            .rows( '.selected' )
+                            .remove()
+                            .draw();
+                            buildData();
+                        }
                     }
                });
-               if (result == true) {
-                   var rows = table
-                   .rows( '.selected' )
-                   .remove()
-                   .draw();
-                   buildData();
-              }
           }
        },
        {

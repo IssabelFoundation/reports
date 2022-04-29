@@ -289,6 +289,7 @@ function _moduleContent(&$smarty, $module_name)
                 'mb_title'      =>  _tr('ERROR'),
                 'mb_message'    =>  _tr("Only administrators can delete CDRs"),
             ));
+            die(_tr("Only administrators can delete CDRs"));
         }
     }
 
