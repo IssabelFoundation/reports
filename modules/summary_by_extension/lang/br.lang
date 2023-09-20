@@ -1,8 +1,8 @@
 <?php
-/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 0.5                                                  |
+  | Issabel version 1.4-1                                               |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
@@ -19,21 +19,29 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: es.lang,v 1.7 2007/09/05 00:36:42 alex Exp $ */
+ $Id: br.lang,v 1.0 2020/05/23 10:00:00 Prisma Telecom Franca SP - leandro@prismatelecom.com $ */
 global $arrLangModule;
-$arrLangModule = array(
-    "Simultaneous Channels (Total)" => "Canais Simultâneos (Total)",
-    "Simultaneous Zap Channels" => "Canais Zap Simultâneos",
-    "Simultaneous SIP Channels" => "Canais SIP Simultâneos",
-    "Simultaneous IAX Channels" => "Canais IAX Simultâneos",
-    "Simultaneous H323 Channels" => "Canais H323 Simultâneos",
-    "Simultaneous Local Channels" => "Canais Local Simultâneos",
-    "Total Channels" => "Total de Canais",
-    "Zap Channels" => "Canais Zap",
-    "SIP Channels" => "Canais SIP",
-    "IAX Channels" => "Canais IAX",
-    "H323 Channels" => "Canais H323",
-    "Local Channels" => "Canais Local",
-    "Nothing to show yet" => "Nada para mostrar"
+$arrLangModule=array(
+"Summary by Extension" => "Resumo",
+"Start date" => "Data Inicial",
+"End date" => "Data Final",
+"Extension"=>"Ramal",
+"User name"=>"Nome Usuário",
+"Sec. Outgoing Calls"=>"Tempo Total (Originadas)",
+"Sec. Incoming Calls"=>"Tempo Total (Recebidas)",
+"Num. Outgoing Calls"=>"Chamadas Saidas",
+"Num. Incoming Calls"=>"Chamadas Entrada",
+"Call Details" => "Vizualizar",
+"Top 10 (Outgoing) ext" => "Top 10 Principais Ligacoes de Saida",
+"Top 10 (Incoming) ext" => "Top 10 principais ligacoes de entrada",
+"Filter by" => "Filtrar Por",
+"User" => "Usúario",
+"seconds" => "segundos",
+"Other calls" => "Outras Chamadas",
+"External #" => "Externa #",
+"calls" => "chamadas",
+"call" => "chamada",
+"No data to display" => "Não há dados para exibir",
+"Details" => "Gerar Gráfico"
 );
 ?>
