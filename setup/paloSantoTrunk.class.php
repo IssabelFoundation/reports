@@ -20,7 +20,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: paloSantoTrunk.class.php, Thu 20 May 2021 08:12:52 AM EDT, nicolas@issabel.com
+  $Id: paloSantoTrunk.class.php, Sat 23 Sep 2023 10:16:17 PM EDT, nicolas@issabel.com
 */
 
 if (isset($arrConf['basePath'])) {
@@ -252,7 +252,7 @@ function getTrunks($oDB)
     				}
 			 }
 	 }
-    return false;
+    return array();
 }
 
 /**
