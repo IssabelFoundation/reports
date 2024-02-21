@@ -11,6 +11,7 @@ BuildArch: noarch
 Requires: issabel-framework >= 5.0.0-1
 #Requires: asterisk
 Requires: php-jpgraph
+Requires: liberation-sans-fonts
 
 Obsoletes: elastix-reports
 

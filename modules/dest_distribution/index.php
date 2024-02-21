@@ -59,32 +59,36 @@ function _moduleContent(&$smarty, $module_name)
 
 
 
-    $arrFormElements = array("date_start"  => array("LABEL"                  => _tr("Start Date"),
-                                                        "REQUIRED"               => "yes",
-                                                        "INPUT_TYPE"             => "DATE",
-                                                        "INPUT_EXTRA_PARAM"      => "",
-                                                        "VALIDATION_TYPE"        => "ereg",
-                                                        "VALIDATION_EXTRA_PARAM" => "^[[:digit:]]{1,2}[[:space:]]+[[:alnum:]]{3}[[:space:]]+[[:digit:]]{4}$"),
-                                 "date_end"    => array("LABEL"                  => _tr("End Date"),
-                                                        "REQUIRED"               => "yes",
-                                                        "INPUT_TYPE"             => "DATE",
-                                                        "INPUT_EXTRA_PARAM"      => "",
-                                                        "VALIDATION_TYPE"        => "ereg",
-                                                        "VALIDATION_EXTRA_PARAM" => "^[[:digit:]]{1,2}[[:space:]]+[[:alnum:]]{3}[[:space:]]+[[:digit:]]{4}$"),
-                                  "criteria"  => array("LABEL"                  => _tr("Criteria"),
-                                                        "REQUIRED"               => "yes",
-                                                        "INPUT_TYPE"             => "SELECT",
-                                                        "INPUT_EXTRA_PARAM"      => array(
-                                                                 "minutes"         => _tr("Distribution by Time"),
-                                                                                    "num_calls"         => _tr("Distribution by Number of Calls"),
-                                                                                    "charge"     => _tr("Distribution by Cost")),
-                                                        "VALIDATION_TYPE"        => "text",
-                                                        "VALIDATION_EXTRA_PARAM" => ""),
-                                 );
+    $arrFormElements = array(
+            "date_start"  => array(
+                "LABEL"                  => _tr("Start Date"),
+                "REQUIRED"               => "yes",
+                "INPUT_TYPE"             => "DATE",
+                "INPUT_EXTRA_PARAM"      => "",
+                "VALIDATION_TYPE"        => "ereg",
+                "VALIDATION_EXTRA_PARAM" => "^[[:digit:]]{1,2}[[:space:]]+[[:alnum:]]{3}[[:space:]]+[[:digit:]]{4}$"),
+            "date_end"    => array(
+                "LABEL"                  => _tr("End Date"),
+                "REQUIRED"               => "yes",
+                "INPUT_TYPE"             => "DATE",
+                "INPUT_EXTRA_PARAM"      => "",
+                "VALIDATION_TYPE"        => "ereg",
+                "VALIDATION_EXTRA_PARAM" => "^[[:digit:]]{1,2}[[:space:]]+[[:alnum:]]{3}[[:space:]]+[[:digit:]]{4}$"),
+            "criteria"  => array(
+                "LABEL"                  => _tr("Criteria"),
+                "REQUIRED"               => "yes",
+                "INPUT_TYPE"             => "SELECT",
+                "INPUT_EXTRA_PARAM"      => array(
+                    "minutes"            => _tr("Distribution by Time"),
+                    "num_calls"          => _tr("Distribution by Number of Calls"),
+                    "charge"             => _tr("Distribution by Cost")),
+                "VALIDATION_TYPE"        => "text",
+                "VALIDATION_EXTRA_PARAM" => ""),
+            );
 
     $oFilterForm = new paloForm($smarty, $arrFormElements);
 
-        // Por omision las fechas toman el sgte. valor (la fecha de hoy)
+    // Por omision las fechas toman el sgte. valor (la fecha de hoy)
     $date_start = date("Y-m-d") . " 00:00:00";
     $date_end   = date("Y-m-d") . " 23:59:59";
     $value_criteria ="minutes";
@@ -92,10 +96,10 @@ function _moduleContent(&$smarty, $module_name)
 
     if(isset($_POST['filter'])) {
         if($oFilterForm->validateForm($_POST)) {
-                // Exito, puedo procesar los datos ahora.
+            // Exito, puedo procesar los datos ahora.
             $date_start = translateDate($_POST['date_start']) . " 00:00:00";
             $date_end   = translateDate($_POST['date_end']) . " 23:59:59";
-        //valido que no exista diferencia mayor de 31 dias entre las fechas
+            //valido que no exista diferencia mayor de 31 dias entre las fechas
             $inicio=strtotime($date_start);
             $fin=strtotime($date_end);
             $num_dias=($fin-$inicio)/86400;
@@ -110,12 +114,12 @@ function _moduleContent(&$smarty, $module_name)
             $value_criteria = $_POST['criteria'];
             $arrFilterExtraVars = array("date_start" => $_POST['date_start'], "date_end" => $_POST['date_end'],"criteria"=>$_POST['criteria']);
         } else {
-                // Error
+            // Error
             $smarty->assign("mb_title", _tr("Validation Error"));
             $arrErrores=$oFilterForm->arrErroresValidacion;
             $strErrorMsg = "<b>"._tr('The following fields contain errors').":</b><br>";
             foreach($arrErrores as $k=>$v) {
-                    $strErrorMsg .= "$k, ";
+                $strErrorMsg .= "$k, ";
             }
             $strErrorMsg .= "";
             $smarty->assign("mb_message", $strErrorMsg);
@@ -146,7 +150,7 @@ function _moduleContent(&$smarty, $module_name)
         $date_start = date("Y-m-d"). " 00:00:00";
         $date_end   = date("Y-m-d"). " 23:59:59";
         $htmlFilter = $contenidoModulo=$oFilterForm->fetchForm("$local_templates_dir/dest_dist_filter.tpl", "",
-        array('date_start' => date("d M Y"), 'date_end' => date("d M Y"), 'criteria'=>'minutes'));
+                array('date_start' => date("d M Y"), 'date_end' => date("d M Y"), 'criteria'=>'minutes'));
     }
 
     if (isset($_GET['action']) && $_GET['action'] == 'image') {
@@ -154,42 +158,42 @@ function _moduleContent(&$smarty, $module_name)
         return '';
     }
 
-//obtener los datos a mostrar
+    //obtener los datos a mostrar
 
 
 
     $type_graph=$value_criteria;
 
-  //consulto cuales son los trunks de salida
+    //consulto cuales son los trunks de salida
 
     $data_graph = leerDatosGrafico($type_graph, $date_start, $date_end);
     $title_sumary = $data_graph['title_sumary'];
 
     //contruir la tabla de sumario
     $smarty->assign('URL_GRAPHIC', construirURL(array(
-        'module'    =>  $module_name,
-        'rawmode'   =>  'yes',
-        'action'    =>  'image',
-        'criteria'  =>  $value_criteria,
-        'date_start'=>  date('d M Y', strtotime($date_start)),
-        'date_end'  =>  date('d M Y', strtotime($date_end)),
-    )));
+                    'module'    =>  $module_name,
+                    'rawmode'   =>  'yes',
+                    'action'    =>  'image',
+                    'criteria'  =>  $value_criteria,
+                    'date_start'=>  date('d M Y', strtotime($date_start)),
+                    'date_end'  =>  date('d M Y', strtotime($date_end)),
+                    )));
 
     if (count($data_graph["values"])>0){
-         $mostrarSumario=TRUE;
+        $mostrarSumario=TRUE;
         $total_valores=array_sum($data_graph["values"]);
         $resultados=$data_graph["values"];
         foreach ($resultados as $pos => $valor){
-             $results[]=array($data_graph['legend'][$pos],
-                              number_format($valor,2),
-                              number_format(($valor/$total_valores)*100,2)
-                             );
+            $results[]=array($data_graph['legend'][$pos],
+                    number_format($valor,2),
+                    number_format(($valor/$total_valores)*100,2)
+                    );
         }
         if (count($results)>1)
-        $results[]=array("<b>Total<b>",
-                              "<b>".number_format($total_valores,2)."<b>",
-                              "<b>".number_format(100,2)."<b>"
-                             );
+            $results[]=array("<b>Total<b>",
+                    "<b>".number_format($total_valores,2)."<b>",
+                    "<b>".number_format(100,2)."<b>"
+                    );
 
         $smarty->assign("Rate_Name", _tr("Rate Name"));
         $smarty->assign("Title_Criteria", $title_sumary);
@@ -229,7 +233,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
     $troncales = $oTrunk->getExtendedTrunksBill($grupos, $arrConfig['ASTETCDIR']['valor'].'/chan_dahdi.conf');//ej array("DAHDI/1","DAHDI/2");
 
     $dsn     = $arrConfig['AMPDBENGINE']['valor'] . "://" . $arrConfig['AMPDBUSER']['valor'] . ":" . $arrConfig['AMPDBPASS']['valor'] . "@" .
-               $arrConfig['AMPDBHOST']['valor'] . "/asteriskcdrdb";
+        $arrConfig['AMPDBHOST']['valor'] . "/asteriskcdrdb";
     $pDB     = new paloDB($dsn);
     $oCDR    = new paloSantoCDR($pDB);
     $arrCDR  = $oCDR->obtenerCDRs("", 0, $date_start,$date_end, "", "","ANSWERED","outgoing",$troncales);
@@ -245,7 +249,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
         foreach($arrCDR['Data'] as $cdr) {
             if (preg_match("/^DAHDI/([[:digit:]]+)/i",$cdr[4],$regs3)) $trunk='DAHDI/g'.$grupos[$regs3[1]];
             else $trunk=str_replace(strstr($cdr[4],'-'),'',$cdr[4]);
-        //tengo que buscar la tarifa para el numero de telefono
+            //tengo que buscar la tarifa para el numero de telefono
             $numero=$cdr[2];
             $tarifa=array();
             $rate_name="";
@@ -258,7 +262,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
             }else
             {
 
-             //verificar si tiene tarifa
+                //verificar si tiene tarifa
                 if (count($tarifa)>0)
                 {
                     foreach ($tarifa as $id_tarifa=>$datos_tarifa)
@@ -271,8 +275,8 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
                 {
                     $rate_name=_tr("default");
                     $id_rate=0;
-                //no tiene tarifa buscar tarifa por omision
-                //por ahora para probar $1 el minuto
+                    //no tiene tarifa buscar tarifa por omision
+                    //por ahora para probar $1 el minuto
                     $rate=get_key_settings($pDBSet,"default_rate");
                     $rate_offset=get_key_settings($pDBSet,"default_rate_offset");
                     $charge=(($cdr[8]/60)*$rate)+$rate_offset;
@@ -287,13 +291,13 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
             }
         }
 
-    //ordenar los valores a mostrar
+        //ordenar los valores a mostrar
         arsort($num_calls);
         arsort($minutos);
         arsort($val_charge);
 
-    //verificar que los valores no excedan el numero de slices del pie
-//numero de llamadas
+        //verificar que los valores no excedan el numero de slices del pie
+        //numero de llamadas
 
         if (count($num_calls)>$MAX_SLICES){
             $i=1;
@@ -311,7 +315,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
         }else
             $valores_num_calls=$num_calls;
 
-    //minutos
+        //minutos
         if (count($minutos)>$MAX_SLICES){
             $i=1;
             foreach($minutos as $id_rate=>$valor)
@@ -328,7 +332,7 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
             $valores_minutos=$minutos;
 
 
-    //charge
+        //charge
         if (count($val_charge)>$MAX_SLICES){
             $i=1;
             foreach($val_charge as $id_rate=>$valor)
@@ -366,8 +370,8 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
         }
 
         $data=array_values($valores_grafico);
-   }else
-   {
+    }else
+    {
         if ($type_graph=="minutes"){
             $titulo=_tr("Distribution by Time");
         }elseif ($type_graph=="charge"){
@@ -377,15 +381,15 @@ function leerDatosGrafico($type_graph, $date_start, $date_end)
             $titulo=_tr("Distribution by Number of Calls");
         }
         $nombres_tarifas=$data=array();
-   }
-//formar la estructura a pasar al pie
+    }
+    //formar la estructura a pasar al pie
 
-   $data_graph=array(
-     "values"=>$data,
-     "legend"=>$nombres_tarifas,
-     "title"=>$titulo,
-     "title_sumary"=>$title_sumary,
-     );
+    $data_graph=array(
+            "values"=>$data,
+            "legend"=>$nombres_tarifas,
+            "title"=>$titulo,
+            "title_sumary"=>$title_sumary,
+            );
     return $data_graph;
 }
 
@@ -394,8 +398,9 @@ function ejecutarGrafico($value_criteria, $date_start, $date_end)
     $data_graph = leerDatosGrafico($value_criteria, $date_start, $date_end);
 
     if (count($data_graph["values"])>0){
-    // Create the Pie Graph.
+        // Create the Pie Graph.
         $graph = new PieGraph(630, 220,"auto");
+        $graph->SetUserFont('../liberation-sans/LiberationSans-Regular.ttf');
         $graph->SetMarginColor('#fafafa');
         $graph->SetFrame(true,'#999999');
 
@@ -403,54 +408,61 @@ function ejecutarGrafico($value_criteria, $date_start, $date_end)
         $graph->legend->SetColor("#444444", "#999999");
         $graph->legend->SetShadow('gray@0.6',4);
 
-    // Set A title for the plot
-        $graph->title->Set(utf8_decode($data_graph["title"]));
+        // Set A title for the plot
+        //$graph->title->Set(utf8_decode($data_graph["title"]));
+        $graph->title->Set($data_graph["title"]);
         $graph->title->SetColor("#444444");
         $graph->legend->Pos(0.1,0.2);
+        $graph->legend->SetFont(FF_USERFONT);
 
-    // Create 3D pie plot
+        // Create 3D pie plot
         $p1 = new PiePlot3d($data_graph["values"]);
         $p1->SetCenter(0.4);
         $p1->SetSize(100);
 
-    // Adjust projection angle
+        // Adjust projection angle
         $p1->SetAngle(60);
 
-    // Adjsut angle for first slice
+        // Adjsut angle for first slice
         $p1->SetStartAngle(45);
 
-    // Display the slice values
+        // Display the slice values
         $p1->value->SetColor("black");
 
-    // Add colored edges to the 3D pie
-    // NOTE: You can't have exploded slices with edges!
+        // Add colored edges to the 3D pie
+        // NOTE: You can't have exploded slices with edges!
         $p1->SetEdge("black");
 
         $p1->SetLegends($data_graph["legend"]);
         $graph->Add($p1);
         $graph->Stroke();
     }else{
-	$graph = new CanvasGraph(630,220,"auto");
-	$title = new Text(utf8_decode($data_graph["title"]));
-	$title->ParagraphAlign('center');
-	$title->SetFont(FF_FONT2,FS_BOLD);
-	$title->SetMargin(3);
-	$title->SetAlign('center');
-	$title->Center(0,630,110);
-	$graph->AddText($title);
+        $graph = new CanvasGraph(630,220,"auto");
+        $graph->SetUserFont('../liberation-sans/LiberationSans-Regular.ttf');
+        //$title = new Text(utf8_decode($data_graph["title"]));
+        $title = new Text($data_graph["title"]);
+        $title->ParagraphAlign('center');
+        //$title->SetFont(FF_FONT2,FS_BOLD);
+        $title->SetFont(FF_USERFONT);
+        $title->SetMargin(3);
+        $title->SetAlign('center');
+        $title->Center(0,630,110);
+        $graph->AddText($title);
 
-	$t1 = new Text(utf8_decode(_tr("No records found")));
-	$t1->SetBox("white","black",true);
-	$t1->ParagraphAlign("center");
-	$t1->SetColor("black");
+        //$t1 = new Text(utf8_decode(_tr("No records found")));
+        $t1 = new Text(_tr("No records found"));
+        $t1->SetBox("white","black",true);
+        $t1->ParagraphAlign("center");
+        $t1->SetColor("black");
+        $t1->SetFont(FF_USERFONT);
 
-	$graph->AddText($t1);
-	$graph->img->SetColor('navy');
-	$graph->img->SetTextAlign('center','bottom');
-	$graph->img->Rectangle(0,0,629,219);
-	$graph->Stroke();
-	/*
-       //no hay datos - por ahora muestro una imagen en blanco con mensaje no records found
+        $graph->AddText($t1);
+        $graph->img->SetColor('navy');
+        $graph->img->SetTextAlign('center','bottom');
+        $graph->img->Rectangle(0,0,629,219);
+        $graph->Stroke();
+        /*
+        //no hay datos - por ahora muestro una imagen en blanco con mensaje no records found
         header('Content-type: image/png');
         $titulo=utf8_decode($data_graph["title"]);
         $im = imagecreate(630, 220);
