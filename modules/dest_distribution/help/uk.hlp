@@ -1,0 +1,48 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+
+<p>Опція "Розподіл за Часом" в меню "Білінг" в Issabel дозволяє нам графічно переглянути розподіл вихідних дзвінків, згрупованих за тарифами. Графік буде змінюватися в залежності від значень фільтра:</p>
+
+<table class="inline">
+	<tr>
+		<th>Назва</th><th>Опис</th>
+	</tr>
+	<tr>
+		<td>Початкова Дата</td><td>Дата початку дзвінків, яку потрібно вибрати.</td>
+	</tr>
+	<tr>
+
+		<td>Кінцева Дата</td><td>Дата закінчення дзвінків, яку потрібно вибрати.</td>
+	</tr>
+	<tr>
+		<td>Критерії</td><td>Критерії розподілу: Розподіл за часом, Розподіл за кількістю дзвінків, Розподіл за вартістю.</td>
+	</tr>
+</table>
+
+<br />
+
+<h3>Розподіл за Часом</h3>
+ 
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_dest_distrib_time.png" border="0" />
+<p>Зображення 1</p></div>
+<br />
+
+<h3>Розподіл за Кількістю Дзвінків</h3>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_dest_distrib_calls.png" border="0" />
+<p>Зображення 2</p></div>
+<br />
+
+<h3>Розподіл за Вартістю</h3>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_dest_distrib_cost.png" border="0" />
+<p>Зображення 3</p></div>
+<br />
+
+</body>
+</html>

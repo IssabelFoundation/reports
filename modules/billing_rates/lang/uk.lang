@@ -1,0 +1,86 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+   Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel Version 4.0                                                  |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2017 Issabel Foundation                                |
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on "AS IS"     |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translated by: LLC LeNET                                             |
+  | Email: support@lenet.com.ua                                          |
+  +----------------------------------------------------------------------+
+  $Id: uk.lang,v 1.7 2023-11-01 15:38:55 LLC LeNET support@lenet.com.ua Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+	"Billing Rates" => "Тарифи",
+	"Prefix" => "Префікс",
+	"Rate" => "Тариф",
+	"Rate Offset" => "Зсув Швидкості",
+	"None" => "Жодного",
+	"New Rate" => "Новий Тариф",
+	"Edit Rate" => "Редагувати Тариф",
+	"View Rate" => "Переглянути Тариф",
+	"View" => "Подивитись",
+	"Rates List" => "Список Тарифів",
+	"(by min)" => " (за хв)",
+	"Trunk" => "Транк",
+	"Name" => "Назва",
+	"Are you sure you wish to continue?" => "Ви впевнені що хочете продовжити?",
+	"create_rate" => "Створити Новий Тариф",
+	"import_rate" => "Імпорт Файлу",
+	"Creation Date" => "Дата Створення",
+	"Closing Date" => "Дата Закриття",
+	"Default" => "За замовчуванням",
+	"New_rate" => "Новий Тариф",
+	"CANCEL" => "Скасувати",
+	"SAVE" => "Зберегти",
+	"REQUIRED_FIELD" => "Обов'язкове поле",
+	"EDIT" => "Редагувати",
+	"DELETE" => "Видалити",
+	"Rate_offset" => "Зміщення тарифу",
+	"Error_new" => "Помилка. Вам необхідно заповнити всі поля для нового тарифу",
+	"Error_edit" => "Помилка. Вам необхідно заповнити всі поля для редагування тарифу",
+	"error_name" => "Помилка. Тариф із такою назвою вже існує",
+	"File_error" => "Помилка під час створення тарифу з файлу.cvs",
+	"Error on line" => "Помилка на лінії",
+	"Invalid_file_extension" => "<b>Недійсне розширення файлу.-</b> Це має бути csv",
+	"create_new_rate" => "Новий тариф успішно створено",
+	"edit_rate" => "Тариф був успішно відредагований",
+	"error_prefix" => "Префікс вже існує з таким самим транком",
+	"error" => "Під час запису в базу даних сталася помилка. Намагайтеся правильно вводити даніПід час запису в базу даних сталася помилка. Намагайтеся правильно вводити дані",
+	"CONFIRM_CONTINUE" => "Ви впевнені що хочете видалити цей тариф",
+	"deleted" => "Тариф успішно видалено",
+	"deleted_error" => "Виникла проблема при видаленні тарифу з бази даних",
+	"Hidden_Digits" => "Приховані Цифри",
+	"APPLY_CHANGES" => "Застосувати Зміни",
+	"Validation Error" => "Непередбачена Помилка",
+	"error_CVS" => "Під час запису в базу даних сталася помилка. Намагайтеся правильно вводити дані. Будь ласка перегляньте файл csv",
+	"by_min" => "(по хвилинах)",
+	"alert_import" => "[!]Файл.csv[/!]&quot;Префікс&quot;,&quot;Назва&quot;,&quot;Тариф&quot;,&quot;Зміщення Тпріфу&quot;,&quot;Приховані цифри&quot;,&quot;Транк&quot;",
+	"Date close" => "Дата закриття",
+	"Rate History" => "Історія Тарифу",
+	"Keep history of the current rate" => "Файл поточного тарифу",
+	"This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "Ця опція дозволяє змінювати поточний тприф, зберігаючи при цьому поточні значення тарифу (зручно для зберігання записів, що відображають фактичне значення тарифу в певний момент часу).",
+	"errorUpdateParent" => "Під час запису в базу даних сталася помилка. Будь ласка спробуйте ще раз.",
+	"Status" => "Статус",
+	"Obsolete" => "Застаріло",
+	"Current" => "Поточний",
+	"File was imported successful" => "Файл успішно імпортовано",
+	"Error rate name already exists in database or is duplicated in csv file" => "Назва частоти помилок вже існує у базі даних або дублюється у файлі csv",
+	"The prefix already exists with the same Trunk in database or is duplicated in csv file" => "Префікс вже існує з таким же транком у базі даних або дублюєтьсяу файлі csv",
+);
+?>

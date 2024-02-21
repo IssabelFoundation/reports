@@ -1,0 +1,48 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+   Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel Version 4.0                                                  |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2017 Issabel Foundation                                |
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on "AS IS"     |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translated by: LLC LeNET                                             |
+  | Email: support@lenet.com.ua                                          |
+  +----------------------------------------------------------------------+
+  $Id: uk.lang,v 1.7 2023-10-28 01:29:13 LLC LENET support@lenet.ua Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+	"Filter" => "Фільтр",
+	"Start Date" => "Початкова Дата",
+	"End Date" => "Кінцева Дата",
+	"Destination Distribution" => "Розподіл за Напрямками",
+	"Criteria" => "Критерії",
+	"Distribution by Time" => "Розподіл за Часом",
+	"Distribution by Number of Calls" => "Розподіл за Кількістю Дзвінків",
+	"Distribution by Cost" => "Розподіл за Вартістю",
+	"Date Range spans maximum number of days" => "Діапазон Дат перекриває максимальну кількість днів",
+	"ERROR" => "ПОМИЛКА",
+	"Minutes" => "Хвилин",
+	"Number of Calls" => "Кількість Дзвінків",
+	"others" => "інші",
+	"Rate Name" => "Назва Тарифу",
+	"default" => "за замовчуванням",
+	"Duration in seconds" => "Тривалість у секундах",
+	"Cost" => "Вартість",
+	"No records found" => "Записів не знайдено",
+);
+?>

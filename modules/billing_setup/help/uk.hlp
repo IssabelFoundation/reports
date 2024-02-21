@@ -1,0 +1,19 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+
+<h1>{$node_name}</h1>
+
+<p>Опція "Налаштування Білінгу" меню "Звіти -> Білінг" в Issabel дозволяє нам визначити вартість хвилини з'єднання для маршруту за замовчуванням, а також визначити, який з транків буде використовуватися для процесу білінгу</p>
+
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_trunk_bill_configuration.png" border="0" />
+<p>Figure 1</p></div>
+<br />
+
+<p>У списку відображаються всі зареєстровані транки, виберіть ті, які будуть використовуватися для білінгу, і натисніть кнопку "Білінгу Доступно".</p>
+
+</body>
+</html>

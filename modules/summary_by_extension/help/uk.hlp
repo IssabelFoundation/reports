@@ -1,0 +1,17 @@
+<html>
+    <header>
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+        <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+    </header>
+    <body>
+        <h1>{$node_name}</h1>
+	<p>Опція " Зведення" в меню "Звіти" в Issabel показує звіт по кожному внутрішньому номеру, зареєстрованому на сервері. Ви можете побачити кількість вхідних і вихідних дзвінків, тривалість дзвінків, ідентифікатор абонента і номер для набору. Скористайтеся фільтром, щоб знайти номер або користувача.</p>	
+        <div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_summary.png" border="0" />
+	<p>Зображення 1</p></div>
+	<br />
+	<p>Натисніть "Переглянути", щоб побачити більше інформації про розширення.</p>
+	<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_summary_graph.png" border="0" />
+	<p>Зображення 2</p></div>
+	<br />
+    </body>
+</html>

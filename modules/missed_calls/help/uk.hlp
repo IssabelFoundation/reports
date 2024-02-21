@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>Параметр "Пропущені Дзвінки" меню "Звіти" в Issabel показує звіт про пропущені дзвінки всіх внутрішніх номерів, щоб ви могли знати, коли внутрішній номер отримував виклики. Ви можете завантажити цей звіт, натиснувши кнопку "Завантажити". Для цього файлу доступні формати <i>csv, xml </i>та <i>pdf</i></p>
+<p>Ви можете відфільтрувати результати за:</p> 
+<ul>
+  <li><b>Початкова Дата:</b> Знайти пропущені дзвінки з цієї дати.</li>
+  <li><b>Кінцева Дата  :</b> Знайти пропущені дзвінки до цієї дати.</li>
+  <li>
+    <b>Пошук      :</b> Ви можете відфільтрувати результати за такими параметрами:
+    <ul>
+      <li><span style="font-style: italic; font-weight: bold;">Джерело :</span> Номер з якого дзвонили.</li>
+      <li><span style="font-style: italic; font-weight: bold;">Призначення:</span> Номер на який надійшов дзвінок.</li>
+    </ul>
+  </li>
+</ul>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_missed_calls.png" border="0" />
+<p>Зображення 1</p></div>
+<br />
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<html>
+<header>
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/styles.css">
+  <link rel="stylesheet" href="/themes/{$THEMENAME}/help.css">
+</header>
+<body>
+<h1>{$node_name}</h1>
+<p>Опція "Графічний Звіт" модуля "Звіти" дозволяє візуалізувати в графічному вигляді інформацію про кількість викликів, черг і транків системи як в кількісному, так і в процентному відношенні.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_graphic_report_1.png" border="0" />
+<p>Зображення 1</p></div>
+<br />
+<p>Щоб побачити інформацію про конкретний внутрішній номер, виберіть "Внутрішній Номер", а потім натисніть на посилання "Тут". У спливаючому вікні виберіть номер телефону і натисніть на кнопку "Показати". <i>Дивіться Зображення 2 та 3</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_graphic_report_2.png" border="0" />
+<p>Зображення 2</p></div>
+<br />
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_graphic_report_3.png" border="0" />
+<p>Зображення 3</p></div>
+<br />
+<p>Існує можливість побудувати графік залежності кількості викликів від черги. Для цього просто виберіть "Черга" у випадаючому меню. <i>Дивіться Зображення 4</i></p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_graphic_report_4.png" border="0" />
+<p>Зображення 4</p></div>
+<br />
+<p>Щоб згенерувати графік дзвінків для транків, виберіть "Транк" у першому випадаючому меню, а потім виберіть назву транку у другому випадаючому меню. Тут ви можете перевірити тривалість вхідних і вихідних дзвінків.</p>
+<div class="hlp_figures"><img src="../modules/{$node_id}/images/uk_hlp_graphic_report_5.png" border="0" />
+<p>Зображення 5</p></div>
+</body>
+</html>
