@@ -44,7 +44,16 @@ class paloSantoCDR
         }
     }
 
-    private function _construirWhereCDR($param, $filterLocalChannel)
+    private function _mb_escape(string $string)
+    {
+        if (function_exists('mb_ereg_replace')) {
+            return mb_ereg_replace('[\x00\x0A\x0D\x1A\x22\x27\x5C]', '\\\0', $string);
+        } else {
+            return preg_replace('~[\x00\x0A\x0D\x1A\x22\x27\x5C]~u', '\\\$0', $string);
+        }
+    }
+
+    private function _construirWhereCDR($param, $filterLocalChannel=false)
     {
         $condSQL = array();
         $paramSQL = array();
@@ -84,7 +93,7 @@ class paloSantoCDR
             $uniques = preg_split("/,/",$param['uniqueid']);
             $uns=array();
             foreach($uniques as $un) {
-               $uns[]=mysql_real_escape_string($un);
+               $uns[]=$this->_mb_escape($un);
             }
             $uniques = implode("','",$uns);
             $condSQL[] = 'uniqueid IN (\'' . $uniques . '\')';
