@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Fri 09 Apr 2021 10:46:33 AM EDT, nicolas@issabel.com
+  $Id: index.php, Mon 17 Jun 2024 10:33:20 AM EDT, nicolas@issabel.com
 */
 include_once "libs/paloSantoGrid.class.php";
 include_once "libs/paloSantoDB.class.php";
@@ -273,11 +273,14 @@ function _moduleContent(&$smarty, $module_name)
             if ($paramFiltro['date_start'] <= $paramFiltro['date_end']) {
                 $paramFiltro['uniqueid'] = $_POST['UIDsList'];
                 $r = $oCDR->borrarCDRs($paramFiltro);
-                die($r);
-                if (!$r) $smarty->assign(array(
-                    'mb_title'      =>  _tr('ERROR'),
-                    'mb_message'    =>  $oCDR->errMsg,
-                ));
+                if (!$r) {
+                     $smarty->assign(array(
+                       'mb_title'      =>  _tr('ERROR'),
+                       'mb_message'    =>  $oCDR->errMsg,
+                    ));
+                } else {
+                    die();
+                }
             } else {
                 $smarty->assign(array(
                     'mb_title'      =>  _tr('ERROR'),
