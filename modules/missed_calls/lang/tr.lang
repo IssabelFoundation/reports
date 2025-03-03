@@ -1,8 +1,8 @@
 <?php
-  /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 4.0.4-18                                               |
+  | Issabel version 1.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
@@ -18,32 +18,33 @@
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
-  | Translate by: Mahir GÜL                                              |
+  |                                                                      |
+  | Translate by: Mahir Gül                                              |
   | Email: mahirgul@gmail.com                                            |
   +----------------------------------------------------------------------+
-  $Id: en.lang,v 1.1 2011-04-25 09:04:41 Eduardo Cueva ecueva@palosanto.com Exp $ */
+  $Id: tr.lang,v 1.0 18/02/2025 16:30:00 bmacias Exp $ */
 global $arrLangModule;
 $arrLangModule=array(
-"Missed Calls" => "Cevapsız Çağrılar",
-"Date" => "Tarih",
-"Source" => "Kaynak",
-"Start Date" => "Başlangıç",
-"End Date" => "Bitiş",
-"Destination" => "Hedef",
-"Time since last call" => "Son aramadan sonra geçen süre",
-"Number of attempts" => "Arama sayısı",
-"year(s)" => "yıl",
-"month(s)" => "ay",
-"day(s)" => "gün",
-"hour(s)" => "saat",
-"minute(s)" => "dakika",
-"second(s)" => "saniye",
-"Status" => "Durum",
-"NO ANSWER" => "Cevapsız",
-"NO ANSWER - VOICEMAIL" => "Cevapsız-Sesli Posta",
-"UNKNOWN" => "Bilinmeyen",
-"ANSWERED" => "Cevaplanmış",
-"The following fields contain errors" => "Hatalı alanlar var",
-'No extension for missed calls. Contact your administrator.' => 'Cevapsız çağrılar için tanımlı değil. Yöneticiyle görüşün.',
+	"Missed Calls" => "Cevapsız Aramalar",
+    "Date" => "Tarih",
+    "Source" => "Kaynak",
+    "Start Date" => "Başlangıç Tarihi",
+    "End Date" => "Bitiş Tarihi",
+    "Destination" => "Hedef",
+    "Time since last call" => "Son aramadan bu yana geçen süre",
+    "Number of attempts" => "Deneme sayısı",
+    "year(s)" => "yıl(lar)",
+    "month(s)" => "ay(lar)",
+    "day(s)" => "gün(ler)",
+    "hour(s)" => "saat(ler)",
+    "minute(s)" => "dakika(lar)",
+    "second(s)" => "saniye(ler)",
+    "Status" => "Durum",
+    "NO ANSWER" => "CEVAP YOK",
+    "NO ANSWER - VOICEMAIL" => "CEVAP YOK VE SESLİ MESAJ",
+    "UNKNOWN" => "BİLİNMEYEN",
+    "ANSWERED" => "CEVAPLANDI",
+    "The following fields contain errors" => "Aşağıdaki alanlar hata içeriyor",
+    'No extension for missed calls. Contact your administrator.' => 'Cevapsız aramalar için uzantı yok. Yöneticinizle iletişime geçin.'
 );
 ?>
