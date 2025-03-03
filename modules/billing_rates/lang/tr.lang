@@ -1,0 +1,85 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel version 1.0                                                  |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translate by: Mahir Gül                                              |
+  | Email: mahirgul@gmail.com                                            |
+  +----------------------------------------------------------------------+
+  $Id: tr.lang,v 1.0 18/02/2025 16:30:00 bmacias Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+    "Billing Rates" => "Faturalandırma Ücretleri",
+    "Prefix" => "Önek",
+    "Rate" => "Ücret",
+    "Rate Offset" => "Ücret Ofseti",
+    "None" => "Yok",
+    "New Rate"=>"Yeni Ücret",
+    "Edit Rate"=>"Ücreti Düzenle",
+    "View Rate"=>"Ücreti Görüntüle",
+    "View"=>"Görüntüle",
+    "Rates List"=>"Ücret Listesi",
+    "(by min)" => " (dakika başına)",
+    "Trunk" => "Trunk",
+    "Name" => "Ad",
+    "Are you sure you wish to continue?"=>"Devam etmek istediğinizden emin misiniz?",
+    "create_rate"=>"Yeni Ücret Oluştur",
+    "import_rate"=>"Dosya İçe Aktar",
+    "Creation Date" => "Oluşturma Tarihi",
+    "Closing Date" => "Kapanış Tarihi",
+    "Default" => "Varsayılan",
+    "New_rate" => "Yeni Ücret",
+    "CANCEL" => "İptal",
+    "SAVE" => "Kaydet",
+    "REQUIRED_FIELD" => "Gerekli alan",
+    "EDIT" => "Düzenle",
+    "DELETE" => "Sil",
+    "Rate_offset" => "Ücret ofseti",
+    "Error_new" => "Hata, yeni ücrette tüm alanları doldurmalısınız",
+    "Error_edit" => "Hata, ücreti düzenlemek için tüm alanları doldurmalısınız",
+    "error_name" => "Hata, ücret adı zaten var",
+    "File_error" => "file.cvs ile ücret oluşturma hatası",
+    "Error on line" => "Satırda hata",
+    "Invalid_file_extension" => "<b>Geçersiz dosya uzantısı.-</b> csv olmalı",
+    "create_new_rate" => "Yeni Ücret oluşturuldu",
+    "edit_rate" => "Ücret düzenlendi",
+    "error_prefix" => "Önek aynı Trunk ile zaten var",
+    "error" => "Veritabanına yazarken bir hata oluştu. Verileri doğru girmeye çalışın",
+    "CONFIRM_CONTINUE" => "Bu ücreti silmek istediğinizden emin misiniz",
+    "deleted" => "Ücret silindi",
+    "deleted_error" => "Veritabanında ücreti silerken bir sorun oluştu",
+    "Hidden_Digits" => "Gizli Rakamlar",
+    "APPLY_CHANGES" => "Değişiklikleri Uygula",
+    "Validation Error" => "Doğrulama Hatası",
+    "error_CVS" => "Veritabanına yazarken bir hata oluştu. Verileri doğru girmeye çalışın. Lütfen csv dosyasını gözden geçirin",
+    "by_min" => "(dakika başına)",
+    "alert_import" => "[!]File.csv[/!]&quot;Önek&quot;,&quot;Ad&quot;,&quot;Ücret&quot;,&quot;Ücret Ofseti&quot;,&quot;Gizli Rakamlar&quot;,&quot;Trunk&quot;",
+    "Date close" => "Kapanış tarihi",
+    "Rate History" => "Ücret Geçmişi",
+    "Keep history of the current rate" => "Mevcut ücret dosyası",
+    "This option allow to create a new rate and keep the history of their rates, or if not only edit the current rate values." => "Bu seçenek, ücretlerin geçmişini tutarak yeni bir ücret oluşturmanıza veya sadece mevcut ücret değerlerini düzenlemenize olanak tanır.",
+    "errorUpdateParent" => "Veritabanına yazarken bir hata oluştu. Lütfen tekrar deneyin.",
+    "Status" => "Durum",
+    "Obsolete" => "Eski",
+    "Current" => "Mevcut",
+    "File was imported successful" => "Dosya başarıyla içe aktarıldı",
+    "Error rate name already exists in database or is duplicated in csv file" => "Hata, ücret adı veritabanında zaten var veya csv dosyasında yineleniyor",
+    "The prefix already exists with the same Trunk in database or is duplicated in csv file" => "Önek, aynı Trunk ile veritabanında zaten var veya csv dosyasında yineleniyor",
+);
+?>
