@@ -1,0 +1,43 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+  Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel version 1.0                                                  |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on an "AS IS"  |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translate by: Mahir Gül                                              |
+  | Email: mahirgul@gmail.com                                            |
+  +----------------------------------------------------------------------+
+  $Id: tr.lang,v 1.0 18/02/2025 16:30:00 bmacias Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+    "Channels Usage Report"=>"Kanal Kullanım Raporu",
+    "Simultaneous Channels (Total)"=>"Eş Zamanlı Kanallar (Toplam)",
+    "Simultaneous Zap Channels"=>"Eş Zamanlı Zap Kanalları",
+    "Simultaneous SIP Channels"=>"Eş Zamanlı SIP Kanalları",
+    "Simultaneous IAX Channels"=>"Eş Zamanlı IAX Kanalları",
+    "Simultaneous H323 Channels"=>"Eş Zamanlı H323 Kanalları",
+    "Simultaneous Local Channels"=>"Eş Zamanlı Yerel Kanallar",
+    "Total Channels"=>"Toplam Kanallar",
+    "Zap Channels"=>"Zap Kanalları",
+    "SIP Channels"=>"SIP Kanalları",
+    "IAX Channels"=>"IAX Kanalları",
+    "H323 Channels"=>"H323 Kanalları",
+    "Local Channels"=>"Yerel Kanallar",
+    "Nothing to show yet" => "Henüz gösterilecek bir şey yok"
+);
+?>
