@@ -1,8 +1,8 @@
 <?php
-  /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 1.4-1                                               |
+  | Issabel version 1.0                                                  |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
@@ -19,32 +19,32 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   |                                                                      |
-  | Translate by: Mahir GÜL                                              |
+  | Translate by: Mahir Gül                                              |
   | Email: mahirgul@gmail.com                                            |
   +----------------------------------------------------------------------+
-  $Id: en.lang,v 1.7 2008/02/18 09:49:00 bmacias Exp $ */
+  $Id: tr.lang,v 1.0 18/02/2025 16:30:00 bmacias Exp $ */
 global $arrLangModule;
 $arrLangModule=array(
-"Summary by Extension" => "Özet",
-"Start date" => "Başlangıç",
-"End date" => "Bitiş",
-"Extension"=>"Abone",
-"User name"=>"Kullanıcı",
-"Sec. Outgoing Calls"=>"Toplam Giden Süre",
-"Sec. Incoming Calls"=>"Toplam Gelen Süre",
-"Num. Outgoing Calls"=>"# Giden Arama",
-"Num. Incoming Calls"=>"# Gelen Arama",
-"Call Details" => "View",
-"Top 10 (Outgoing) ext" => "Top 10 (Giden) Abone",
-"Top 10 (Incoming) ext" => "Top 10 (Gelen) Abone",
-"Filter by" => "Filtrele",
-"User" => "Kullanıcı",
-"seconds" => "Saniye",
-"Other calls" => "Diger",
-"External #" => "Harici #",
-"calls" => "Cagri",
-"call" => "Cagri",
-"No data to display" => "Veri Yok",
-"Details" => "Detaylar"
+	"Summary by Extension" => "Uzantıya Göre Özet",
+    "Start date" => "Başlangıç tarihi",
+    "End date" => "Bitiş tarihi",
+    "Extension"=>"Uzt.",
+    "User name"=>"Kullanıcı",
+    "Sec. Outgoing Calls"=>"Toplam süre (Giden Aramalar)",
+    "Sec. Incoming Calls"=>"Toplam süre (Gelen Aramalar)",
+    "Num. Outgoing Calls"=>"Giden Arama Sayısı",
+    "Num. Incoming Calls"=>"Gelen Arama Sayısı",
+    "Call Details" => "Görüntüle",
+    "Top 10 (Outgoing) ext" => "En İyi 10 (Giden) uzt",
+    "Top 10 (Incoming) ext" => "En İyi 10 (Gelen) uzt",
+    "Filter by" => "Şuna göre filtrele",
+    "User" => "Kullanıcı",
+    "seconds" => "saniye",
+    "Other calls" => "Diğer aramalar",
+    "External #" => "Harici #",
+    "calls" => "aramalar",
+    "call" => "arama",
+    "No data to display" => "Görüntülenecek veri yok",
+    "Details" => "Detaylar"
 );
 ?>
